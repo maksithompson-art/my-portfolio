@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import ProjectContent from './ProjectContent'; // Importiamo il nuovo componente visivo
 
+export const runtime = 'edge';
+
 export const revalidate = 60; 
 
 type Props = {
