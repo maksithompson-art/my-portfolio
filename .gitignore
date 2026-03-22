@@ -1,0 +1,55 @@
+# --- NODE.JS & DEPENDENCIES ---
+# Mai caricare le librerie, Vercel le installerà da solo
+node_modules/
+.pnp
+.pnp.js
+
+# --- NEXT.JS ---
+# Cartelle di build che pesano moltissimo
+.next/
+out/
+build/
+
+# --- PYTHON (Il colpevole dei 135MB!) ---
+# Escludiamo l'ambiente virtuale e i file temporanei
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- AMBIENTE E SEGRETI ---
+# Fondamentale per la sicurezza delle tue chiavi Sanity
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.local
+
+# --- CARTELLE DI LAVORO IMMAGINI ---
+# Escludiamo le cartelle dello script Python per non intasare Git
+da_convertire/
+webp_finale/
+
+# --- LOG & DEBUG ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- SISTEMA OPERATIVO ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+
+# --- VERCEL ---
+.vercel
+
+# --- TYPESCRIPT ---
+*.tsbuildinfo
+next-env.d.ts
