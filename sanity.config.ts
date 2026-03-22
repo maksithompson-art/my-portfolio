@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...tool]]/page.tsx` route
+ * This configuration is used for the Sanity Studio that’s mounted on the `/app/studio/[[...tool]]/page.tsx` route
  */
 
 import {visionTool} from '@sanity/vision'
@@ -18,7 +18,7 @@ export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
-  // Add and edit the content schema in the './sanity/schemaTypes' folder
+  // Riferimento allo schema (una sola volta!)
   schema,
   plugins: [
     structureTool({
@@ -26,14 +26,14 @@ export default defineConfig({
         S.list()
           .title('Contenuti')
           .items([
-            // Questo crea la lista trascinabile per i tuoi Progetti
+            // Lista trascinabile per i Progetti
             orderableDocumentListDeskItem({
               type: 'project',
               title: 'Ordina Progetti',
               S,
               context,
             }),
-            // Questo mostra i progetti normalmente (opzionale)
+            // Filtra gli altri documenti per non duplicare la voce Progetti
             ...S.documentTypeListItems().filter(
               (item) => item.getId() !== 'project'
             ),
@@ -41,5 +41,4 @@ export default defineConfig({
     }),
     visionTool(),
   ],
-  schema: schema,
 })
