@@ -21,6 +21,7 @@ export default async function PortfolioPage() {
 
   // Facciamo la richiesta al database
   const projects = await client.fetch(query);
+  
 
   // Passiamo i dati estratti al nostro componente visuale
   return <PortfolioClient projects={projects} />;
