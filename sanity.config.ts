@@ -8,17 +8,18 @@ import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import {apiVersion, dataset, projectId} from './sanity/env'
+// Importiamo le variabili, ma sotto definiremo l'ID corretto con la "l"
+import {apiVersion, dataset as envDataset, projectId as envProjectId} from './sanity/env'
 import {schema} from './sanity/schemaTypes'
 import {structure} from './sanity/structure'
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 
 export default defineConfig({
   basePath: '/studio',
-  projectId,
-  dataset,
-  // Riferimento allo schema (una sola volta!)
+  // USIAMO L'ID CORRETTO CON LA "L" (l)
+  projectId: 'rq3pakl5', 
+  dataset: 'production',
+  
   schema,
   plugins: [
     structureTool({

@@ -1,20 +1,21 @@
 {
+  "createdAt": "2026-03-23T00:18:59.309Z",
+  "studioVersion": "5.17.1",
   "version": 3,
-  "createdAt": "2026-03-22T19:27:16.366Z",
   "workspaces": [
     {
-      "name": "default",
-      "title": "Default",
       "basePath": "/studio",
-      "projectId": "rq3pakl5",
       "dataset": "production",
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"2\" fill=\"#04b8be\"></rect><text x=\"50%\" y=\"50%\" text-anchor=\"middle\" alignment-baseline=\"middle\" fill=\"hsla(182, 96%, 0%, 1)\" style=\"font-family:Inter, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, &quot;Liberation Sans&quot;, Helvetica, Arial, system-ui, sans-serif;font-weight:500;font-size:13px;transform:translateY(1px)\">D</text></svg>",
       "mediaLibrary": {
-        "enabled": false
+        "enabled": false,
+        "__internal": {}
       },
-      "schema": "f315336f.create-schema.json",
-      "tools": "ba47da56.create-tools.json"
+      "name": "default",
+      "projectId": "rq3pakl5",
+      "schema": "1c59add8.create-schema.json",
+      "title": "Default",
+      "tools": "ef87c8fe.create-tools.json"
     }
-  ],
-  "studioVersion": "4.22.0"
+  ]
 }

@@ -1,8 +1,10 @@
+import { Metadata } from 'next'; // 1. IMPORTAZIONE MANCANTE AGGIUNTA
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
-import ProjectContent from './ProjectContent'; // Importiamo il nuovo componente visivo
+import { urlFor } from '@/sanity/lib/image';
+import ProjectContent from './ProjectContent';
 
 export const runtime = 'edge';
 
@@ -13,19 +15,32 @@ type Props = {
 };
 
 // SEO Metadata Generation
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // 2. AWAIT SUI PARAMS OBBLIGATORIO IN NEXT.JS 15
   const { slug } = await params;
-  const query = `*[_type == "project" && slug.current == $slug][0] {
-    title, description, techStack, "img": heroImage.asset->url
-  }`;
-  const project = await client.fetch(query, { slug });
-  if (!project) return { title: 'Progetto non trovato' };
 
+  // Chiediamo a Sanity i dati SEO per questo specifico progetto
+  const query = `*[_type == "project" && slug.current == $slug][0]{
+    title,
+    seoTitle,
+    seoDescription,
+    seoImage
+  }`;
+  
+  const project = await client.fetch(query, { slug });
+
+  // Se il progetto non esiste, non facciamo nulla
+  if (!project) return {};
+
+  // Restituiamo i metadata formattati perfettamente per Next.js
   return {
-    title: `${project.title} | Maksi Thompson Creative Studio`,
-    description: project.description,
-    keywords: project.techStack?.join(", ") + ", Torino, Portfolio",
-    openGraph: { title: project.title, description: project.description, images: project.img ? [project.img] : [] },
+    title: project.seoTitle || project.title, 
+    description: project.seoDescription,
+    openGraph: {
+      title: project.seoTitle || project.title,
+      description: project.seoDescription,
+      images: project.seoImage ? [urlFor(project.seoImage).width(1200).height(630).url()] : [],
+    },
   };
 }
 

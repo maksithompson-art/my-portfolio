@@ -6,10 +6,10 @@ export const project = defineType({
   type: 'document',
   fields: [
     defineField({
-  name: 'orderRank',
-  type: 'string',
-  hidden: true,
-}),  
+      name: 'orderRank',
+      type: 'string',
+      hidden: true,
+    }),
     defineField({
       name: 'title',
       title: 'Titolo del Progetto',
@@ -48,6 +48,8 @@ export const project = defineType({
           type: 'string',
           title: 'Alt Text (SEO)',
           description: 'Descrizione per Google e accessibilità.',
+          // FONDAMENTALE PER LA SEO: Rende il campo obbligatorio
+          validation: (Rule) => Rule.required().error('Devi inserire un testo alternativo per la SEO!'),
         }
       ]
     }),
@@ -55,7 +57,22 @@ export const project = defineType({
       name: 'gallery',
       title: 'Galleria Immagini Extra',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }]
+      of: [
+        { 
+          type: 'image', 
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alt Text (SEO)',
+              description: 'Descrivi brevemente l\'immagine.',
+              // Obbligatorio anche per le immagini della galleria
+              validation: (Rule) => Rule.required().error('Manca l\'Alt Text!'),
+            }
+          ]
+        }
+      ]
     }),
     defineField({
       name: 'techStack',
@@ -78,5 +95,26 @@ export const project = defineType({
     defineField({ name: 'role', title: 'Ruolo (es. 3D Art Director)', type: 'string' }),
     defineField({ name: 'client', title: 'Cliente (es. Mercedes AMG)', type: 'string' }),
     defineField({ name: 'year', title: 'Anno (es. 2023)', type: 'string' }),
+    
+    // --- SEZIONE SEO & AIO ---
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO Title',
+      type: 'string',
+      description: 'Il titolo per Google (max 60 caratteri). Se lo lasci vuoto, userà il "Titolo del Progetto" in automatico.',
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
+      rows: 2,
+      description: 'Una breve descrizione per i risultati di ricerca (max 160 caratteri).',
+    }),
+    defineField({
+      name: 'seoImage',
+      title: 'SEO Image (Open Graph)',
+      type: 'image',
+      description: "L'immagine che appare quando condividi il link sui social come iMessage o LinkedIn (consigliato 1200x630px).",
+    }),
   ],
 })

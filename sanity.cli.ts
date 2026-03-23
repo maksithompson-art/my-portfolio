@@ -4,7 +4,13 @@
 **/
 import { defineCliConfig } from 'sanity/cli'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+// Inseriamo i valori reali perché lo Studio ospitato li trovi sempre
+const projectId = 'rq3pakl5' // <--- USA LA L MINUSCOLA QUI
+const dataset = 'production'
 
-export default defineCliConfig({ api: { projectId, dataset } })
+export default defineCliConfig({ 
+  api: { 
+    projectId, 
+    dataset 
+  } 
+})
