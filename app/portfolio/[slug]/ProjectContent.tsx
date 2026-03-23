@@ -59,6 +59,30 @@ export default function ProjectContent({ project }: { project: any }) {
               </div>
             </div>
           )}
+          
+          {project.videoGallery && project.videoGallery.length > 0 && (
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold mb-6 text-zinc-100">Video & Render</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {project.videoGallery.map((vidUrl: string, index: number) => (
+                  <div 
+                    key={index} 
+                    className="relative rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-xl"
+                  >
+                    <video 
+                      src={vidUrl} 
+                      autoPlay // Parte da solo
+                      loop // Ricomincia all'infinito (perfetto per i render 3D)
+                      muted // OBBLIGATORIO per far funzionare l'autoplay
+                      playsInline // OBBLIGATORIO per gli iPhone
+                      controls // Aggiunge i tasti play/pausa se l'utente vuole fermarlo
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* 2. IL TESTO (Con effetto "Leggi Tutto") */}
           <div className="mb-16">

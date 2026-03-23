@@ -52,7 +52,7 @@ export default async function ProjectDetail({ params }: Props) {
   // Query GROQ per tutti i dati
   const query = `*[_type == "project" && slug.current == $slug][0] {
     title, category, "heroImg": heroImage.asset->url, "altText": heroImage.alt,
-    "gallery": gallery[].asset->url, description, body, techStack, role, client, year
+    "gallery": gallery[].asset->url, "videoGallery": videoGallery[].asset->url, description, body, techStack, role, client, year
   }`;
 
   const project = await client.fetch(query, { slug });

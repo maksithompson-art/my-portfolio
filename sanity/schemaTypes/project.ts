@@ -116,5 +116,17 @@ export const project = defineType({
       type: 'image',
       description: "L'immagine che appare quando condividi il link sui social come iMessage o LinkedIn (consigliato 1200x630px).",
     }),
+    defineField({
+      name: 'videoGallery',
+      title: 'Galleria Video Extra',
+      type: 'array',
+      description: 'Carica qui le tue clip (MP4, WebM) come render 3D, dietro le quinte o B-roll. Verranno mostrate nel corpo del progetto.',
+      of: [
+        {
+          type: 'file',
+          options: { accept: 'video/mp4,video/webm' },
+        }
+      ]
+    }),
   ],
 })

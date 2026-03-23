@@ -1,0 +1,345 @@
+[
+  {
+    "fields": [
+      {
+        "hidden": true,
+        "name": "orderRank",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Titolo del Progetto"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Slug (URL)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Web & App",
+              "value": "Web App"
+            },
+            {
+              "title": "3D & VR",
+              "value": "3D Art Direction"
+            },
+            {
+              "title": "Fotografia",
+              "value": "Official Photographer"
+            },
+            {
+              "title": "Filmmaking",
+              "value": "Cinematography"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "Web App",
+                  "3D Art Direction",
+                  "Official Photographer",
+                  "Cinematography"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "category",
+        "type": "string",
+        "title": "Categoria Principale"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "fields": [
+          {
+            "validation": [
+              {
+                "level": "error",
+                "rules": [
+                  {
+                    "flag": "presence",
+                    "constraint": "required"
+                  }
+                ],
+                "message": "Devi inserire un testo alternativo per la SEO!"
+              }
+            ],
+            "description": "Descrizione per Google e accessibilità.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alt Text (SEO)"
+          }
+        ],
+        "name": "heroImage",
+        "type": "image",
+        "title": "Immagine Principale (Hero)"
+      },
+      {
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "message": "Manca l'Alt Text!"
+                  }
+                ],
+                "description": "Descrivi brevemente l'immagine.",
+                "name": "alt",
+                "type": "string",
+                "title": "Alt Text (SEO)"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "gallery",
+        "type": "array",
+        "title": "Galleria Immagini Extra"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "techStack",
+        "type": "array",
+        "title": "Tecnologie Utilizzate (es. Next.js, Sony FX3, Unreal Engine)"
+      },
+      {
+        "rows": 3,
+        "name": "description",
+        "type": "text",
+        "title": "Breve Descrizione (Per la card del portfolio)"
+      },
+      {
+        "of": [
+          {
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "level": "error",
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "of": [],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "type": "block"
+          }
+        ],
+        "name": "body",
+        "type": "array",
+        "title": "Case Study Completo"
+      },
+      {
+        "name": "role",
+        "type": "string",
+        "title": "Ruolo (es. 3D Art Director)"
+      },
+      {
+        "name": "client",
+        "type": "string",
+        "title": "Cliente (es. Mercedes AMG)"
+      },
+      {
+        "name": "year",
+        "type": "string",
+        "title": "Anno (es. 2023)"
+      },
+      {
+        "description": "Il titolo per Google (max 60 caratteri). Se lo lasci vuoto, userà il \"Titolo del Progetto\" in automatico.",
+        "name": "seoTitle",
+        "type": "string",
+        "title": "SEO Title"
+      },
+      {
+        "rows": 2,
+        "description": "Una breve descrizione per i risultati di ricerca (max 160 caratteri).",
+        "name": "seoDescription",
+        "type": "text",
+        "title": "SEO Description"
+      },
+      {
+        "description": "L'immagine che appare quando condividi il link sui social come iMessage o LinkedIn (consigliato 1200x630px).",
+        "name": "seoImage",
+        "type": "image",
+        "title": "SEO Image (Open Graph)"
+      },
+      {
+        "description": "Carica qui le tue clip (MP4, WebM) come render 3D, dietro le quinte o B-roll. Verranno mostrate nel corpo del progetto.",
+        "of": [
+          {
+            "options": {
+              "accept": "video/mp4,video/webm"
+            },
+            "type": "file"
+          }
+        ],
+        "name": "videoGallery",
+        "type": "array",
+        "title": "Galleria Video Extra"
+      }
+    ],
+    "name": "project",
+    "type": "document",
+    "title": "Progetti Portfolio"
+  }
+]
