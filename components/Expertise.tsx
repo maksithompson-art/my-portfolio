@@ -2,10 +2,10 @@ import { Terminal, Camera, Film, Code2, Database, MapPin, Utensils, Building2 } 
 
 export default function Expertise() {
   return (
-    <section id="services" className="py-32 bg-zinc-900/30 border-y border-zinc-800/50 relative overflow-hidden">
+    <section id="services" className="py-32 bg-zinc-950 border-y border-zinc-900 relative overflow-hidden">
       
-      {/* Subtle background glow for premium UI feel */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* SCATTO PRESTAZIONALE 1: Sostituito il blur-[120px] con un Gradiente Radiale nativo (Costo GPU = 0) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-zinc-950/0 to-transparent pointer-events-none transform-gpu" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         
@@ -29,8 +29,9 @@ export default function Expertise() {
         <div className="grid lg:grid-cols-3 gap-8">
           
           {/* Card 1: Web Development */}
-          <div className="p-10 rounded-[2rem] bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 hover:border-emerald-500/50 hover:bg-zinc-900 transition-all duration-500 group">
-            <Terminal className="w-12 h-12 text-emerald-400 mb-8 group-hover:scale-110 transition-transform duration-500" />
+          {/* SCATTO PRESTAZIONALE 2: Rimosso il backdrop-blur-sm. Usiamo un colore solido bg-zinc-900. Nessun calcolo in tempo reale necessario! */}
+          <div className="p-10 rounded-[2rem] bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 transition-colors duration-500 group">
+            <Terminal className="w-12 h-12 text-emerald-400 mb-8 group-hover:scale-110 transition-transform duration-500 will-change-transform" />
             <h3 className="text-2xl font-bold mb-4">Sviluppo Siti Web & E-Commerce</h3>
             <p className="text-zinc-400 leading-relaxed mb-8">
               Realizzazione di piattaforme web veloci, sicure e ottimizzate per i motori di ricerca (SEO). Dimentica i template lenti: scrivo architetture custom orientate alla conversione.
@@ -48,8 +49,8 @@ export default function Expertise() {
           </div>
 
           {/* Card 2: Photography */}
-          <div className="p-10 rounded-[2rem] bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 hover:border-rose-500/50 hover:bg-zinc-900 transition-all duration-500 group relative overflow-hidden">
-            <Camera className="w-12 h-12 text-rose-400 mb-8 group-hover:scale-110 transition-transform duration-500" />
+          <div className="p-10 rounded-[2rem] bg-zinc-900 border border-zinc-800 hover:border-rose-500/50 transition-colors duration-500 group relative overflow-hidden">
+            <Camera className="w-12 h-12 text-rose-400 mb-8 group-hover:scale-110 transition-transform duration-500 will-change-transform" />
             <h3 className="text-2xl font-bold mb-4">Fotografia Commerciale</h3>
             <p className="text-zinc-400 leading-relaxed mb-8">
               L'estetica vende. Realizzo shooting fotografici professionali per esaltare l'identità del tuo brand. Immagini perfette per il tuo nuovo sito web o le campagne social.
@@ -67,8 +68,8 @@ export default function Expertise() {
           </div>
 
           {/* Card 3: Filmmaking */}
-          <div className="p-10 rounded-[2rem] bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 hover:border-orange-500/50 hover:bg-zinc-900 transition-all duration-500 group">
-            <Film className="w-12 h-12 text-orange-400 mb-8 group-hover:scale-110 transition-transform duration-500" />
+          <div className="p-10 rounded-[2rem] bg-zinc-900 border border-zinc-800 hover:border-orange-500/50 transition-colors duration-500 group">
+            <Film className="w-12 h-12 text-orange-400 mb-8 group-hover:scale-110 transition-transform duration-500 will-change-transform" />
             <h3 className="text-2xl font-bold mb-4">Produzione Video</h3>
             <p className="text-zinc-400 leading-relaxed mb-8">
               Storytelling cinematografico per catturare l'attenzione. Dalla pre-produzione al color grading, realizzo video aziendali e spot pubblicitari che raccontano la tua eccellenza.

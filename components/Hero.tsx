@@ -1,106 +1,98 @@
-import { Mail, ArrowRight, MapPin, Code2, Camera, CheckCircle2, Star } from 'lucide-react';
+import { ArrowRight, MapPin, Code2, Camera, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <header className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-      {/* Premium Background Glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[128px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-rose-500/10 rounded-full blur-[128px] pointer-events-none mix-blend-screen" />
+    <section className="relative min-h-[100svh] flex flex-col justify-center bg-zinc-950 overflow-hidden selection:bg-emerald-500/30">
       
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-8 items-center">
+      {/* BACKGROUND ENGINE (Zero Lag) */}
+      <div className="absolute inset-0 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-emerald-900/20 via-zinc-950/80 to-zinc-950 pointer-events-none transform-gpu"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-rose-900/10 via-transparent to-transparent pointer-events-none transform-gpu"></div>
+
+      {/* KINETIC TYPOGRAPHY (Keyword-rich background text) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] w-full flex flex-col items-center justify-center opacity-[0.03] select-none pointer-events-none overflow-hidden" aria-hidden="true">
+        <span className="text-[11vw] font-black text-white leading-none tracking-tighter whitespace-nowrap">
+          MAKSI THOMPSON
+        </span>
+        <span className="text-[11vw] font-black text-transparent leading-none tracking-tighter whitespace-nowrap" style={{ WebkitTextStroke: '2px white' }}>
+          PHOTOGRAPHER
+        </span>
+      </div>
+
+      {/* CORE CONTENT (Centrato e SEO-Optimized) */}
+      <div className="container mx-auto px-6 md:px-12 relative z-10 -mt-10">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           
-          {/* LEFT COLUMN: SEO Copy & CTAs */}
-          <div className="flex-1 text-left w-full">
-            {/* Location & Status Badge */}
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-zinc-900/80 border border-zinc-800 text-sm font-medium text-zinc-300 mb-8 backdrop-blur-md shadow-lg">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-zinc-400" />
-                Disponibile a Torino & Remoto
-              </span>
-            </div>
-            
-            {/* The SEO H1 - Visually striking, keyword-dense */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-              Sviluppo <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Siti Web</span> <br className="hidden md:block" />
-              & <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-orange-400">Fotografia.</span>
-            </h1>
-            
-            {/* The SEO Sub-headline (H2 visually styled as a paragraph) */}
-            <h2 className="text-lg md:text-xl text-zinc-400 max-w-xl leading-relaxed mb-10 font-normal">
-              Sono Maksi, <strong>Web Developer Full-Stack</strong> e <strong>Fotografo Commerciale a Torino</strong>. Realizzo piattaforme web ultra-veloci, siti per e-commerce, ristoranti, personal brands e narrazioni visive progettate per dominare il mercato.
-            </h2>
+          {/* Status Badge - Ottimizzato per Local SEO */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-zinc-800/60 bg-zinc-900/50 text-sm font-medium text-zinc-300 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <MapPin className="w-4 h-4 text-zinc-400" />
+              <span className="sr-only">Posizione:</span> Torino & Disponibile da Remoto
+            </span>
+          </div>
+          
+          {/* Main Headline H1 - Il cuore della SEO (Parole chiave esatte) */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] text-zinc-50 mb-6 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
+            Sviluppo <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Siti Web</span> <br />
+            & Fotografia <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-orange-400">Commerciale.</span>
+          </h1>
+          
+          {/* Subheadline H2 - Copywriting orientato alla conversione e al ROI del cliente */}
+          <h2 className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-12 font-medium animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+            Sono Maksi, <strong>Web Developer Full-Stack</strong> e <strong>Fotografo Commerciale a Torino</strong>. Realizzo piattaforme web ultra-veloci, siti e-commerce e narrazioni visive progettate per dominare il mercato.
+          </h2>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Link href="/#contact" className="bg-zinc-50 text-zinc-950 px-8 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
-                Richiedi un Preventivo <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link href="/portfolio" className="px-8 py-4 rounded-full font-semibold border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2 text-zinc-300 backdrop-blur-sm">
-                Esplora il Portfolio
-              </Link>
-            </div>
+        </div>
+      </div>
 
-            {/* Keyword Injection via "Trust Signals" */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-500 font-medium">
-              <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Next.js & React</span>
-              <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Siti per Ristoranti</span>
-              <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-rose-500" /> Food Photography</span>
-              <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-rose-500" /> SEO Optimization</span>
-            </div>
+      {/* THE FLOATING DOCK (Call to Action e Social Proof) */}
+      <nav aria-label="Navigazione rapida" className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full px-6 flex justify-center z-20 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-500">
+        <div className="flex flex-col sm:flex-row items-center gap-2 p-2 rounded-[2rem] sm:rounded-full bg-zinc-900/90 border border-zinc-800 shadow-2xl backdrop-blur-md">
+          
+          {/* CTA Principale - Chiara e orientata all'azione */}
+          <Link href="/#contact" className="w-full sm:w-auto px-8 py-4 rounded-full bg-zinc-50 text-zinc-950 font-bold hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2">
+            Richiedi un Preventivo <ArrowRight className="w-5 h-5" aria-hidden="true" />
+          </Link>
+          
+          <div className="flex items-center gap-2 px-2">
+            {/* Link con aria-label per Accessibilità/SEO */}
+            <Link href="#work" aria-label="Esplora i progetti di Sviluppo Web" className="w-12 h-12 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-colors group">
+              <Code2 className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
+            </Link>
+            <Link href="#work" aria-label="Esplora il portfolio di Fotografia e Video" className="w-12 h-12 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-rose-400 hover:border-rose-500/50 transition-colors group">
+              <Camera className="w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true" />
+            </Link>
           </div>
 
-          {/* RIGHT COLUMN: UI Abstract Visuals / Glassmorphism */}
-          <div className="flex-1 w-full relative hidden lg:block">
-            <div className="relative w-full aspect-square max-w-[500px] mx-auto">
-              
-              {/* Decorative Circle */}
-              <div className="absolute inset-0 border border-zinc-800 rounded-full animate-[spin_60s_linear_infinite]" />
-              <div className="absolute inset-8 border border-zinc-800/50 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
-              
-              {/* Dev Card */}
-              <div className="absolute top-12 -left-8 p-6 bg-zinc-900/80 backdrop-blur-xl border border-zinc-700/50 rounded-2xl shadow-2xl transform -rotate-6 hover:rotate-0 transition-all duration-500">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4 border border-emerald-500/30">
-                  <Code2 className="w-6 h-6 text-emerald-400" />
-                </div>
-                <h3 className="text-zinc-50 font-bold mb-1">Web Development</h3>
-                <p className="text-zinc-400 text-sm">Frontend & Backend Architecture</p>
+          <div className="hidden sm:flex items-center pl-4 pr-6 border-l border-zinc-800">
+            <div className="flex -space-x-3 mr-4">
+              <div className="relative w-8 h-8 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Foto cliente soddisfatto" fill sizes="32px" className="object-cover" priority />
               </div>
-
-              {/* Photo Card */}
-              <div className="absolute bottom-20 -right-4 p-6 bg-zinc-900/80 backdrop-blur-xl border border-zinc-700/50 rounded-2xl shadow-2xl transform rotate-6 hover:rotate-0 transition-all duration-500">
-                <div className="w-12 h-12 rounded-xl bg-rose-500/20 flex items-center justify-center mb-4 border border-rose-500/30">
-                  <Camera className="w-6 h-6 text-rose-400" />
-                </div>
-                <h3 className="text-zinc-50 font-bold mb-1">Visual Production</h3>
-                <p className="text-zinc-400 text-sm">Commercial & Event Photography</p>
+              <div className="relative w-8 h-8 rounded-full border-2 border-zinc-900 bg-zinc-800 overflow-hidden">
+                <Image src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Foto cliente soddisfatto" fill sizes="32px" className="object-cover" priority />
               </div>
-
-              {/* Center Client Rating Card */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5 bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl flex items-center gap-4 z-20 w-64">
-                <div className="flex -space-x-3">
-                  <div className="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 overflow-hidden"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Client" /></div>
-                  <div className="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 overflow-hidden"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Client" /></div>
-                  <div className="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-xs font-bold text-zinc-300">+40</div>
-                </div>
-                <div>
-                  <div className="flex text-amber-400 mb-1">
-                    <Star className="w-3 h-3 fill-current" /><Star className="w-3 h-3 fill-current" /><Star className="w-3 h-3 fill-current" /><Star className="w-3 h-3 fill-current" /><Star className="w-3 h-3 fill-current" />
-                  </div>
-                  <p className="text-xs text-zinc-400 font-medium">Progetti di Successo</p>
-                </div>
-              </div>
-              
+            </div>
+            {/* Micro-copy per instillare fiducia */}
+            <div className="text-xs text-zinc-400 font-medium leading-tight">
+              Scelto da oltre <strong className="text-zinc-200">40+</strong><br/>Aziende e Brand
             </div>
           </div>
 
         </div>
-      </div>
-    </header>
+      </nav>
+
+      {/* Indicatore di scroll */}
+      <Link href="#work" aria-label="Scorri verso i progetti recenti" className="absolute bottom-4 left-1/2 -translate-x-1/2 text-zinc-600 hover:text-zinc-300 transition-colors animate-bounce hidden sm:block">
+        <ChevronDown className="w-5 h-5" aria-hidden="true" />
+      </Link>
+
+    </section>
   );
 }
