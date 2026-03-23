@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import ProjectContent from './ProjectContent';
+import Image from 'next/image';
 
 export const runtime = 'edge';
 
@@ -70,7 +71,24 @@ export default async function ProjectDetail({ params }: Props) {
       {project.heroImg && (
         <div className="container mx-auto px-6 md:px-12 mb-16">
           <div className="w-full h-[40vh] md:h-[60vh] relative rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl">
-            <img src={project.heroImg} alt={project.altText || project.title} className="w-full h-full object-cover" />
+            {/* Hero Image (Immagine di Copertina) */}
+{project.heroImg && (
+  <div className="container mx-auto px-6 md:px-12 mb-16">
+    <div className="w-full h-[40vh] md:h-[60vh] relative rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl">
+      
+      <Image 
+        src={project.heroImg} 
+        alt={project.altText || project.title} // Qui usiamo finalmente l'Alt text obbligatorio!
+        fill // Dice a Next.js di riempire il div padre (che deve avere position: relative)
+        priority // CRUCIALE: Dice a Google "Questa foto è la prima cosa da caricare, non aspettare!"
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, 100vw" // Aiuta il browser a scaricare la dimensione giusta
+      />
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+    </div>
+  </div>
+)}
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
           </div>
         </div>
