@@ -183,7 +183,7 @@ export default async function WebDevLanding() {
             <div className="relative z-10">
               <h3 className="text-3xl font-bold text-zinc-50 mb-6">Tecnologia e Ingegneria</h3>
               <p className="text-zinc-400 leading-relaxed text-lg mb-6">
-                I nostri progetti sono sviluppati secondo le più moderne metodologie (Agile) e con l'impiego delle tecnologie più avanzate disponibili sul mercato. Non utilizzo CMS obsoleti o page-builder lenti. Scrivo codice nativo per garantire sicurezza militare e performance irraggiungibili dai competitor.
+                I nostri progetti sono sviluppati secondo le più moderne metodologie (Agile) e con l'impiego delle tecnologie più avanzate disponibili sul mercato. Non utilizzo CMS obsoleti o page-builder lenti. Scrivo codice nativo per garantire sicurezza e performance irraggiungibili dai competitor.
               </p>
               
               <div className="flex items-center gap-4 text-sm font-semibold text-emerald-400 mb-6">
