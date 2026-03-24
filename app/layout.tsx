@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     template: "%s | Maksi Thompson", // Rende i titoli dinamici (es. "Sailing Studios | Maksi Thompson")
   },
   description: "Web developer full-stack e fotografo commerciale a Torino. Creazione siti web ad alte prestazioni per e-commerce, ristoranti, aziende e personal brand.",
+  icons: {
+    icon: '/favicon.png', // Il logo standard
+    apple: '/favicon.png', // Il logo per quando qualcuno salva il sito su iPhone
+  },
   keywords: [
     "sviluppo siti web", 
     "sviluppo siti web italia", 
