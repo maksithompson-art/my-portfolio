@@ -18,7 +18,7 @@ export const metadata = {
     'UI/UX design', 'MVP startup'
   ],
   alternates: {
-    canonical: 'https://www.tuodominio.com/sviluppo-web',
+    canonical: 'https://www.maksithompson.com/sviluppo-siti-web',
   },
   openGraph: {
     title: 'Sviluppo Web App & E-Commerce ad Alte Prestazioni',
@@ -116,7 +116,7 @@ export default async function WebDevLanding() {
       {
         "@type": "ProfessionalService",
         "name": "Maksi Thompson - Sviluppo Siti Web & Web Agency",
-        "image": "https://www.tuodominio.com/logo.png",
+        "image": "https://www.maksithompson.com/logo.png",
         "description": "Sviluppatore Web Full-Stack specializzato in Web App, Custom CMS, E-commerce e SEO a Torino.",
         "address": {
           "@type": "PostalAddress",

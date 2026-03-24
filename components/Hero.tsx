@@ -45,7 +45,7 @@ export default function Hero() {
           
           {/* Subheadline H2 - Copywriting orientato alla conversione e al ROI del cliente */}
           <h2 className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-12 font-medium animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-            Sono Maksi, <strong>Web Developer Full-Stack</strong> e <strong>Fotografo Commerciale a Torino</strong>. Realizzo piattaforme web ultra-veloci, siti e-commerce e narrazioni visive progettate per dominare il mercato.
+            Sono Maksi, <strong>Web Developer Full-Stack</strong> e <strong>Fotografo Commerciale a Torino</strong>. Realizzo piattaforme web performanti, siti e-commerce e narrazioni visive pensate per offrire valore concreto e rispondere alle reali esigenze del mercato attuale.
           </h2>
 
         </div>
