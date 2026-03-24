@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-bold text-zinc-100 mb-4">1. Titolare del Trattamento</h2>
             <p className="mb-4">
               Il Titolare del trattamento dei dati raccolti attraverso questo sito web è:<br />
-              <strong>Maksi Thompson</strong><br />
+              <strong>Maksimilian Thompson</strong><br />
               Sviluppatore Web e Fotografo Commerciale (Torino, Italia).<br />
               Email di contatto: <a href="m.thompson@sailingstudios.com" className="text-emerald-400 hover:underline">m.thompson@sailingstudios.com</a> 
               {/* Sostituisci con la tua vera email! */}
