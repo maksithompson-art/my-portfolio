@@ -11,8 +11,6 @@ import { urlFor } from '@/sanity/lib/image'
 import { getDictionary, hasLocale, type Locale } from '../../dictionaries'
 import ProjectContent from './ProjectContent'
 
-export const revalidate = 60
-
 const LABELS = {
   it: { client: 'Cliente', role: 'Ruolo', sector: 'Settore', projectInfo: 'Informazioni sul Progetto', backLabel: 'Archivio', continueLabel: 'Continua a esplorare', backTitle: "Torna All'Archivio" },
   en: { client: 'Client', role: 'Role', sector: 'Sector', projectInfo: 'Project Information', backLabel: 'Archive', continueLabel: 'Continue exploring', backTitle: 'Back to Archive' },

@@ -1,16 +1,14 @@
+export const runtime = 'edge'
+
 import '../globals.css'
 import type React from 'react'
 import { Metadata } from 'next'
 import NavbarWrapper from '@/components/NavbarWrapper'
 import Footer from '@/components/Footer'
-import { getDictionary, hasLocale, LOCALES, type Locale } from './dictionaries'
+import { getDictionary, hasLocale, type Locale } from './dictionaries'
 import { notFound } from 'next/navigation'
 
 const BASE_URL = 'https://maksithompson.com'
-
-export async function generateStaticParams() {
-  return LOCALES.map((lang) => ({ lang }))
-}
 
 export async function generateMetadata({
   params,

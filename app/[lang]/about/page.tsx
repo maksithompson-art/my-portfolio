@@ -1,14 +1,12 @@
+export const runtime = 'edge'
+
 import { notFound } from 'next/navigation'
 
 import type { Metadata } from 'next'
-import { getDictionary, hasLocale, LOCALES, type Locale } from '../dictionaries'
+import { getDictionary, hasLocale, type Locale } from '../dictionaries'
 import AboutClient from '@/components/AboutClient'
 
 const BASE_URL = 'https://maksithompson.com'
-
-export function generateStaticParams() {
-  return LOCALES.map((lang) => ({ lang }))
-}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
