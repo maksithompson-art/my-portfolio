@@ -5,12 +5,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { client } from '@/sanity/lib/client'
-import { getDictionary, hasLocale, type Locale } from '../../dictionaries'
+import { getDictionary, hasLocale, LOCALES, type Locale } from '../../dictionaries'
 import Contact from '@/components/Contact'
 
 export const revalidate = 86400
 
 const BASE_URL = 'https://maksithompson.com'
+
+export function generateStaticParams() {
+  return LOCALES.map((lang) => ({ lang }))
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params

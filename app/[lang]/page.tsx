@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { getDictionary, hasLocale, type Locale } from './dictionaries'
+import { getDictionary, hasLocale, LOCALES, type Locale } from './dictionaries'
 import { client } from '@/sanity/lib/client'
 import Hero from '@/components/Hero'
 import Expertise from '@/components/Expertise'
@@ -10,6 +10,10 @@ import SelectedWork from '@/components/SelectedWork'
 import Contact from '@/components/Contact'
 
 export const revalidate = 86400
+
+export function generateStaticParams() {
+  return LOCALES.map((lang) => ({ lang }))
+}
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
