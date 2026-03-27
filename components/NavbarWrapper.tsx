@@ -1,17 +1,24 @@
-"use client";
+'use client'
 
-import { usePathname } from 'next/navigation';
-// Sostituisci './Navbar' con il percorso corretto del tuo componente Navbar attuale
-import Navbar from './Navbar'; 
+import { usePathname } from 'next/navigation'
+import Navbar from './Navbar'
 
-export default function NavbarWrapper() {
-  const pathname = usePathname();
+interface NavDict {
+  home: string
+  cases: string
+  web: string
+  photo3d: string
+  about: string
+  contact: string
+  directory: string
+  switchLang: string
+  languages: { it: string; fr: string; en: string }
+}
 
-  // Se l'URL inizia con "/studio", restituiamo "null" (cioè nascondiamo la Navbar)
-  if (pathname.startsWith('/studio')) {
-    return null;
-  }
+export default function NavbarWrapper({ lang, dict }: { lang: string; dict: NavDict }) {
+  const pathname = usePathname()
 
-  // Altrimenti, mostriamo la Navbar normalmente
-  return <Navbar />;
+  if (pathname.startsWith('/studio')) return null
+
+  return <Navbar lang={lang} dict={dict} />
 }

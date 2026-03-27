@@ -1,76 +1,132 @@
-"use client";
+'use client'
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import LanguageSwitcher from './LanguageSwitcher'
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+interface NavDict {
+  home: string
+  cases: string
+  web: string
+  photo3d: string
+  about: string
+  contact: string
+  directory: string
+  switchLang: string
+  languages: { it: string; fr: string; en: string }
+}
+
+export default function Navbar({ lang, dict }: { lang: string; dict: NavDict }) {
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-    return () => { document.body.style.overflow = 'unset'; }
-  }, [mobileMenuOpen]);
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'unset'
+    return () => { document.body.style.overflow = 'unset' }
+  }, [mobileMenuOpen])
+
+  const close = () => setMobileMenuOpen(false)
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-zinc-950/80 backdrop-blur-md border-zinc-800 py-4' : 'bg-transparent border-transparent py-6'}`}>
-        <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-          
-          <Link href="/" className="font-bold text-xl tracking-tighter flex items-center gap-2 z-50">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center">
-              <span className="text-zinc-950 font-black">M</span>
-            </div>
-            <span>Maksi Thompson<span className="text-zinc-500"></span></span>
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-            <Link href="/about" className="hover:text-zinc-50 transition-colors">About me</Link>
-            <Link href="/servizi/sviluppo-siti-web" className="hover:text-zinc-50 transition-colors">Sviluppo Web</Link>
-            <Link href="/servizi/fotografo-torino" className="hover:text-zinc-50 transition-colors">Fotografia</Link>
-            <Link href="/portfolio" className="hover:text-zinc-50 transition-colors">Portfolio</Link>
-          </div>
-          
-          <div className="hidden md:flex items-center">
-            <Link href="/#contact" className="bg-zinc-50 text-zinc-950 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-zinc-200 transition-colors flex items-center gap-2 group">
-              Let's Talk
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 font-sans px-8 md:px-12 lg:px-16 ${scrolled ? 'py-4' : 'py-8'}`}>
+        <div className="flex justify-between items-center w-full">
+
+          {/* DESKTOP: Pill Navigation */}
+          <div className={`hidden md:flex transition-all duration-500 items-center gap-4 text-[10px] font-bold tracking-widest uppercase ${
+            scrolled
+              ? 'bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-full px-4 py-3 mx-auto shadow-2xl'
+              : 'bg-white text-black rounded-full px-2 py-2'
+          }`}>
+            <Link href={`/${lang}`} className={`${scrolled ? 'hover:text-[#CCFF00] px-4' : 'bg-black text-white px-4 py-2 rounded-full'} transition-colors`}>
+              {dict.home}
             </Link>
+            <Link href={`/${lang}/portfolio`} className={`hover:text-[#CCFF00] transition-colors ${scrolled ? 'px-4' : ''}`}>
+              {dict.cases}
+            </Link>
+            <Link href={`/${lang}/servizi/sviluppo-siti-web`} className={`hover:text-[#CCFF00] transition-colors ${scrolled ? 'px-4' : ''}`}>
+              {dict.web}
+            </Link>
+            <Link href={`/${lang}/servizi/fotografia`} className={`hover:text-[#CCFF00] transition-colors ${scrolled ? 'px-4' : ''}`}>
+              {dict.photo3d}
+            </Link>
+            <Link href={`/${lang}/about`} className={`hover:text-[#CCFF00] transition-colors ${scrolled ? 'px-4' : 'pr-4'}`}>
+              {dict.about}
+            </Link>
+            <div className={`${scrolled ? 'pl-2 border-l border-white/20' : 'pl-2 border-l border-black/10'}`}>
+              <LanguageSwitcher currentLang={lang} labels={dict.languages} scrolled={scrolled} />
+            </div>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden z-50 text-zinc-50 p-2"
+          {/* RIGHT: Hamburger */}
+          <button
+            className={`absolute right-8 md:right-12 lg:right-16 z-50 w-10 h-10 border rounded-full flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors duration-300 ${
+              mobileMenuOpen
+                ? 'border-white/30 text-white hover:bg-white hover:text-black'
+                : scrolled
+                  ? 'border-white/30 text-white bg-black/50 backdrop-blur-md hover:bg-white hover:text-black'
+                  : 'border-white/30 text-white hover:bg-white hover:text-black'
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <div className={`h-[2px] bg-current transition-all duration-300 ${mobileMenuOpen ? 'w-5 rotate-45 translate-y-[3px]' : 'w-4'}`} />
+            <div className={`h-[2px] bg-current transition-all duration-300 ${mobileMenuOpen ? 'w-5 -rotate-45 -translate-y-[3px]' : 'w-4'}`} />
           </button>
+
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* MOBILE MENU OVERLAY */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-zinc-950 pt-32 px-6 flex flex-col gap-6 animate-in fade-in slide-in-from-top-4 duration-300 md:hidden">
-          <Link onClick={() => setMobileMenuOpen(false)} href="/about" className="text-2xl font-bold text-zinc-400 hover:text-zinc-50 transition-colors">About me</Link>
-          <Link onClick={() => setMobileMenuOpen(false)} href="/servizi/sviluppo-siti-web" className="text-2xl font-bold text-zinc-400 hover:text-zinc-50 transition-colors">Sviluppo Web</Link>
-          <Link onClick={() => setMobileMenuOpen(false)} href="/servizi/fotografo-torino" className="text-2xl font-bold text-zinc-400 hover:text-zinc-50 transition-colors">Fotografia</Link>
-          <Link onClick={() => setMobileMenuOpen(false)} href="/portfolio" className="text-2xl font-bold text-zinc-400 hover:text-zinc-50 transition-colors">Portfolio</Link>
-          <hr className="border-zinc-800 my-4" />
-          <Link onClick={() => setMobileMenuOpen(false)} href="/#contact" className="bg-emerald-500 text-zinc-950 px-6 py-4 rounded-full text-lg font-bold text-center flex items-center justify-center gap-2">
-            Let's Talk <ArrowUpRight className="w-5 h-5" />
-          </Link>
+        <div className="fixed inset-0 z-40 bg-[#0A0A0A]/95 backdrop-blur-xl flex flex-col justify-center px-8 md:px-24 animate-in fade-in slide-in-from-top-4 duration-300 font-sans">
+          <div className="flex flex-col gap-8 w-full max-w-4xl mx-auto">
+            <div className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 mb-4 border-b border-white/10 pb-4">
+              {dict.directory}
+            </div>
+            <Link onClick={close} href={`/${lang}`} className="text-5xl md:text-7xl font-medium tracking-tight text-white hover:text-[#CCFF00] transition-colors">{dict.home}</Link>
+            <Link onClick={close} href={`/${lang}/portfolio`} className="text-5xl md:text-7xl font-medium tracking-tight text-white hover:text-[#CCFF00] transition-colors">{dict.cases}</Link>
+            <Link onClick={close} href={`/${lang}/servizi/sviluppo-siti-web`} className="text-5xl md:text-7xl font-medium tracking-tight text-white hover:text-[#CCFF00] transition-colors">{dict.web}</Link>
+            <Link onClick={close} href={`/${lang}/servizi/fotografia`} className="text-5xl md:text-7xl font-medium tracking-tight text-white hover:text-[#CCFF00] transition-colors">{dict.photo3d}</Link>
+            <Link onClick={close} href={`/${lang}/about`} className="text-5xl md:text-7xl font-medium tracking-tight text-white hover:text-[#CCFF00] transition-colors">{dict.about}</Link>
+
+            <div className="mt-4 flex flex-row items-center gap-6">
+              {(['it', 'en', 'fr'] as const).map((locale) => (
+                <a
+                  key={locale}
+                  href={`/${locale}`}
+                  onClick={() => { document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=${60*60*24*365}; samesite=lax`; close() }}
+                  className={`text-xs font-bold tracking-widest uppercase transition-colors ${lang === locale ? 'text-[#CCFF00]' : 'text-gray-500 hover:text-white'}`}
+                >
+                  {dict.languages[locale]}
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-6">
+              <Link onClick={close} href={`/${lang}/#contact`} className="inline-flex items-center justify-center bg-white text-black rounded-full px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#CCFF00] transition-colors w-fit">
+                {dict.contact}
+              </Link>
+            </div>
+          </div>
+
+          {/* Decorative grid */}
+          <div className="absolute right-0 bottom-0 p-12 pointer-events-none select-none opacity-5">
+            <div className="grid grid-cols-2 gap-4 w-64 h-64">
+              <div className="w-full h-full bg-white" />
+              <div className="w-full h-full border border-white" />
+              <div className="w-full h-full border border-white" />
+              <div className="w-full h-full bg-white" />
+            </div>
+          </div>
         </div>
       )}
     </>
-  );
+  )
 }

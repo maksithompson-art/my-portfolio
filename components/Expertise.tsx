@@ -1,93 +1,144 @@
-import { Terminal, Camera, Film, Code2, Database, MapPin, Utensils, Building2 } from 'lucide-react';
+import Link from 'next/link'
+import { ArrowUpRight, Plus, Code, Camera, Video } from 'lucide-react'
 
-export default function Expertise() {
+interface ExpertiseDict {
+  bigTitle1: string
+  bigTitle2: string
+  subTitle1: string
+  subTitle2: string
+  subTitle3: string
+  card1Title: string
+  card1Desc: string
+  card1Feat1: string
+  card1Feat2: string
+  card2Title: string
+  card2Desc: string
+  card2Feat1: string
+  card2Feat2: string
+  card2Feat3: string
+  card3Title: string
+  card3Desc: string
+  card3Feat1: string
+  card3Feat2: string
+  footerText: string
+  cta: string
+}
+
+export default function Expertise({ dict, lang }: { dict: ExpertiseDict; lang: string }) {
   return (
-    <section id="services" className="py-32 bg-zinc-950 border-y border-zinc-900 relative overflow-hidden">
-      
-      {/* SCATTO PRESTAZIONALE 1: Sostituito il blur-[120px] con un Gradiente Radiale nativo (Costo GPU = 0) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-zinc-950/0 to-transparent pointer-events-none transform-gpu" />
+    <section className="relative w-full bg-[#0A0A0A] text-white py-32 px-8 md:px-12 lg:px-24 flex flex-col items-center">
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        
-        {/* SEO Optimized Section Header */}
-        <div className="mb-20 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-sm font-medium mb-6">
-            <MapPin className="w-4 h-4 text-emerald-400" /> Operativo a Torino, Piemonte e Italia.
+      {/* MASSIVE TYPOGRAPHY GRAPHIC */}
+      <div className="w-full flex items-center justify-center mb-24 cursor-default">
+        <h2 className="text-[4rem] md:text-[8rem] lg:text-[13rem] font-black tracking-tighter text-[#CCFF00] leading-none flex items-center">
+          {dict.bigTitle1}
+          <div className="grid grid-cols-2 gap-2 mx-4 w-16 md:w-32 hover:scale-105 transition-transform duration-500">
+            <div className="w-full aspect-square bg-white" />
+            <div className="w-full aspect-square bg-transparent" />
+            <div className="w-full aspect-square bg-white" />
+            <div className="w-full aspect-square bg-white" />
           </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            Il Vantaggio Competitivo: <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-500">Logica & Creatività.</span>
-          </h2>
-          
-          <p className="text-lg text-zinc-400 leading-relaxed">
-            Perché interfacciarsi con una web agency e uno studio fotografico separati? Offro alle attività locali e ai brand un unico punto di riferimento a Torino per lo <strong>sviluppo di siti web ad alte prestazioni</strong> e la <strong>creazione di contenuti visivi premium</strong>.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          
-          {/* Card 1: Web Development */}
-          {/* SCATTO PRESTAZIONALE 2: Rimosso il backdrop-blur-sm. Usiamo un colore solido bg-zinc-900. Nessun calcolo in tempo reale necessario! */}
-          <div className="p-10 rounded-[2rem] bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 transition-colors duration-500 group">
-            <Terminal className="w-12 h-12 text-emerald-400 mb-8 group-hover:scale-110 transition-transform duration-500 will-change-transform" />
-            <h3 className="text-2xl font-bold mb-4">Sviluppo Siti Web & E-Commerce</h3>
-            <p className="text-zinc-400 leading-relaxed mb-8">
-              Realizzazione di piattaforme web veloci, sicure e ottimizzate per i motori di ricerca (SEO). Dimentica i template lenti: scrivo architetture custom orientate alla conversione.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 text-sm text-zinc-300">
-                <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-zinc-800"><Code2 className="w-4 h-4 text-emerald-500" /></div>
-                <span>Frontend moderno (React & Next.js)</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-zinc-300">
-                <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-zinc-800"><Database className="w-4 h-4 text-emerald-500" /></div>
-                <span>Backend e Database scalabili</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Photography */}
-          <div className="p-10 rounded-[2rem] bg-zinc-900 border border-zinc-800 hover:border-rose-500/50 transition-colors duration-500 group relative overflow-hidden">
-            <Camera className="w-12 h-12 text-rose-400 mb-8 group-hover:scale-110 transition-transform duration-500 will-change-transform" />
-            <h3 className="text-2xl font-bold mb-4">Fotografia Commerciale</h3>
-            <p className="text-zinc-400 leading-relaxed mb-8">
-              L'estetica vende. Realizzo shooting fotografici professionali per esaltare l'identità del tuo brand. Immagini perfette per il tuo nuovo sito web o le campagne social.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 text-sm text-zinc-300">
-                <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-zinc-800"><Utensils className="w-4 h-4 text-rose-500" /></div>
-                <span>Food Photography per Ristoranti</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-zinc-300">
-                <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-zinc-800"><Building2 className="w-4 h-4 text-rose-500" /></div>
-                <span>Corporate & Brand Identity</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3: Filmmaking */}
-          <div className="p-10 rounded-[2rem] bg-zinc-900 border border-zinc-800 hover:border-orange-500/50 transition-colors duration-500 group">
-            <Film className="w-12 h-12 text-orange-400 mb-8 group-hover:scale-110 transition-transform duration-500 will-change-transform" />
-            <h3 className="text-2xl font-bold mb-4">Produzione Video</h3>
-            <p className="text-zinc-400 leading-relaxed mb-8">
-              Storytelling cinematografico per catturare l'attenzione. Dalla pre-produzione al color grading, realizzo video aziendali e spot pubblicitari che raccontano la tua eccellenza.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 text-sm text-zinc-300">
-                <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-zinc-800"><Film className="w-4 h-4 text-orange-500" /></div>
-                <span>Video Aziendali & Spot Commerciali</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-zinc-300">
-                <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-zinc-800"><Camera className="w-4 h-4 text-orange-500" /></div>
-                <span>Contenuti dinamici per Social Media</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
+          {dict.bigTitle2}
+        </h2>
       </div>
+
+      {/* SUB-HEADER */}
+      <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center mb-16 gap-4 md:gap-8 text-center">
+        <h3 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight flex flex-col md:flex-row items-center gap-4 md:gap-6">
+          {dict.subTitle1}
+          <div className="bg-white text-black px-6 py-4 text-xs md:text-sm font-bold flex items-center gap-4 hover:bg-[#CCFF00] transition-colors cursor-default">
+            {dict.subTitle2} <ArrowUpRight className="w-4 h-4" />
+          </div>
+          {dict.subTitle3}
+        </h3>
+      </div>
+
+      {/* 3-COLUMN BENTO SERVICE GRID */}
+      <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+
+        {/* CARD 1: WEB DEV */}
+        <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-b from-[#1a2e05] to-[#0A0A0A] p-8 md:p-10 flex flex-col justify-start border border-white/10 hover:border-[#CCFF00]/50 transition-colors group h-full min-h-[480px]">
+          <div className="w-12 h-12 mb-8 bg-[#CCFF00]/10 rounded-xl flex items-center justify-center">
+            <Code className="text-[#CCFF00] w-6 h-6" />
+          </div>
+          <h4 className="text-2xl md:text-3xl font-medium mb-4 text-white leading-tight">
+            {dict.card1Title}
+          </h4>
+          <p className="text-sm text-gray-400 mb-8 leading-relaxed">{dict.card1Desc}</p>
+          <div className="mt-auto flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] shrink-0" />
+              <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">{dict.card1Feat1}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] shrink-0" />
+              <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">{dict.card1Feat2}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* CARD 2: PHOTOGRAPHY */}
+        <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-b from-[#1a2e05] to-[#0A0A0A] p-8 md:p-10 flex flex-col justify-start border border-white/10 hover:border-[#CCFF00]/50 transition-colors group h-full min-h-[480px]">
+          <div className="relative z-10 w-12 h-12 mb-8 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center">
+            <Camera className="text-[#CCFF00] w-6 h-6" />
+          </div>
+          <h4 className="relative z-10 text-2xl md:text-3xl font-medium mb-4 text-white leading-tight">
+            {dict.card2Title}
+          </h4>
+          <p className="relative z-10 text-sm text-gray-400 mb-8 leading-relaxed">{dict.card2Desc}</p>
+          <div className="relative z-10 mt-auto flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#CCFF00] transition-colors shrink-0" />
+              <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">{dict.card2Feat1}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#CCFF00] transition-colors shrink-0" />
+              <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">{dict.card2Feat2}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#CCFF00] transition-colors shrink-0" />
+              <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">{dict.card2Feat3}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* CARD 3: VIDEO */}
+        <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-b from-[#1a2e05] to-[#0A0A0A] p-8 md:p-10 flex flex-col justify-start border border-white/10 hover:border-[#CCFF00]/50 transition-colors group h-full min-h-[480px]">
+          <div className="relative z-10 w-12 h-12 mb-8 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center">
+            <Video className="text-[#CCFF00] w-6 h-6" />
+          </div>
+          <h4 className="relative z-10 text-2xl md:text-3xl font-medium mb-4 text-white leading-tight">
+            {dict.card3Title}
+          </h4>
+          <p className="relative z-10 text-sm text-gray-400 mb-8 leading-relaxed">{dict.card3Desc}</p>
+          <div className="relative z-10 mt-auto flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#CCFF00] transition-colors shrink-0" />
+              <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">{dict.card3Feat1}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#CCFF00] transition-colors shrink-0" />
+              <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">{dict.card3Feat2}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* FOOTER OF SECTION */}
+      <div className="w-full max-w-7xl flex flex-col md:flex-row justify-between items-end pt-8 gap-8 border-t border-white/10">
+        <div className="flex items-start gap-6">
+          <Plus className="w-10 h-10 text-[#CCFF00] font-light shrink-0" />
+          <p className="text-lg font-medium text-white max-w-md leading-snug">{dict.footerText}</p>
+        </div>
+        <Link
+          href={`/${lang}/servizi/sviluppo-siti-web`}
+          className="border border-white/30 rounded-full px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors flex items-center gap-4 shrink-0"
+        >
+          {dict.cta} <ArrowUpRight className="w-4 h-4" />
+        </Link>
+      </div>
+
     </section>
-  );
+  )
 }

@@ -1,163 +1,110 @@
-"use client";
+'use client'
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight, Play, ChevronRight, ZoomIn } from 'lucide-react';
+import Link from 'next/link'
+import Image from 'next/image'
+import { ArrowUpRight } from 'lucide-react'
 
-// Define the shape of the data coming from Sanity
 interface Project {
-  _id: string;
-  title: string;
-  slug: string;
-  category: string;
-  img: string;
-  altText: string;
+  _id: string
+  title: string
+  slug: string
+  category: string
+  description?: string
+  img: string
 }
 
-export default function SelectedWork({ projects = [] }: { projects: Project[] }) {
-  const [activeTab, setActiveTab] = useState('web');
+interface SelectedWorkDict {
+  title1: string
+  title2: string
+  subtitle: string
+  exploreBtn: string
+  defaultDesc: string
+  viewAll: string
+}
 
-  // DYNAMIC FILTERING: Sort the Sanity projects into the correct tabs based on your Schema values
-  const webProjects = projects.filter(p => p.category === 'Web App');
-  const photoProjects = projects.filter(p => p.category === 'Official Photographer');
-  // Grouping Filmmaking and 3D into the video tab
-  const filmProjects = projects.filter(p => p.category === 'Cinematography' || p.category === '3D Art Direction'); 
+export default function SelectedWork({
+  projects = [],
+  dict,
+  lang,
+}: {
+  projects: Project[]
+  dict: SelectedWorkDict
+  lang: string
+}) {
+  const displayProjects = projects.slice(0, 4)
 
   return (
-    <section id="work" className="py-32">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Lavori Recenti</h2>
-            <p className="text-zinc-400">Una selezione dei miei progetti di sviluppo web e campagne visive.</p>
-          </div>
-          
-          {/* Custom Tabs */}
-          <div className="flex p-1 bg-zinc-900 border border-zinc-800 rounded-full w-fit" role="tablist">
-            <button 
-              role="tab"
-              aria-selected={activeTab === 'web'}
-              onClick={() => setActiveTab('web')}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${activeTab === 'web' ? 'bg-zinc-800 text-zinc-50 shadow-sm' : 'text-zinc-400 hover:text-zinc-200'}`}
-            >
-              Sviluppo Web
-            </button>
-            <button 
-              role="tab"
-              aria-selected={activeTab === 'photo'}
-              onClick={() => setActiveTab('photo')}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${activeTab === 'photo' ? 'bg-zinc-800 text-zinc-50 shadow-sm' : 'text-zinc-400 hover:text-zinc-200'}`}
-            >
-              Fotografia
-            </button>
-            <button 
-              role="tab"
-              aria-selected={activeTab === 'film'}
-              onClick={() => setActiveTab('film')}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${activeTab === 'film' ? 'bg-zinc-800 text-zinc-50 shadow-sm' : 'text-zinc-400 hover:text-zinc-200'}`}
-            >
-              Video & 3D
-            </button>
-          </div>
-        </div>
+    <section id="work" className="relative w-full bg-gradient-to-b from-[#0A0A0A] via-[#0A0D0B] to-[#0A110D] text-white py-32 px-8 md:px-12 lg:px-24">
 
-        {/* Web Projects Grid */}
-        {activeTab === 'web' && (
-          <div className="grid md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {/* ADDED 'index' TO MAP */}
-            {webProjects.length > 0 ? webProjects.map((project, index) => (
-              <Link href={`/portfolio/${project.slug}`} key={project._id} className="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer block">
-                <div className="relative aspect-[4/3] overflow-hidden bg-zinc-950">
-                  {project.img && (
-                    <Image 
-                      src={project.img} 
-                      alt={project.altText || project.title} 
-                      fill
-                      priority={index === 0} // LCP FIX: Prioritize the first image
-                      sizes="(max-width: 768px) 100vw, 50vw" 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
-                    />
-                  )}
-                </div>
-                <div className="p-8 relative z-10 bg-zinc-900">
-                  <p className="text-emerald-400 text-sm font-semibold mb-2">{project.category}</p>
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-300 transition-colors flex items-center justify-between">
-                    {project.title}
-                    <ArrowUpRight className="w-5 h-5 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
-                  </h3>
-                </div>
-              </Link>
-            )) : <p className="text-zinc-500 col-span-2">Nessun progetto web trovato.</p>}
-          </div>
-        )}
-
-        {/* Photography Masonry */}
-        {activeTab === 'photo' && (
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {/* ADDED 'index' TO MAP */}
-            {photoProjects.length > 0 ? photoProjects.map((project, index) => (
-              <Link href={`/portfolio/${project.slug}`} key={project._id} className="break-inside-avoid relative group rounded-2xl overflow-hidden cursor-zoom-in bg-zinc-900 block w-full">
-                {project.img && (
-                  <Image 
-                    src={project.img} 
-                    alt={project.altText || project.title} 
-                    width={800} 
-                    height={1000}
-                    priority={index === 0 || index === 1} // LCP FIX: Prioritize first two for masonry
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" 
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <h3 className="text-lg font-bold text-white mb-1">{project.title}</h3>
-                  <span className="text-xs font-medium flex items-center gap-2 text-zinc-300">
-                    <ZoomIn className="w-4 h-4" /> Vedi Progetto
-                  </span>
-                </div>
-              </Link>
-            )) : <p className="text-zinc-500">Nessuna fotografia trovata.</p>}
-          </div>
-        )}
-
-        {/* Film / 3D Grid */}
-        {activeTab === 'film' && (
-          <div className="grid md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {/* ADDED 'index' TO MAP */}
-            {filmProjects.length > 0 ? filmProjects.map((project, index) => (
-              <Link href={`/portfolio/${project.slug}`} key={project._id} className="group relative rounded-3xl overflow-hidden cursor-pointer bg-zinc-900 block">
-                <div className="relative aspect-video overflow-hidden bg-zinc-950">
-                  {project.img && (
-                    <Image 
-                      src={project.img} 
-                      alt={project.altText || project.title} 
-                      fill
-                      priority={index === 0} // LCP FIX: Prioritize the first image
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-90" 
-                    />
-                  )}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-zinc-950/50 backdrop-blur-md flex items-center justify-center border border-zinc-50/20 group-hover:scale-110 transition-transform duration-300">
-                      <Play className="w-6 h-6 text-zinc-50 ml-1" />
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none">
-                  <p className="text-orange-400 text-sm font-semibold mb-1">{project.category}</p>
-                  <h3 className="text-2xl font-bold">{project.title}</h3>
-                </div>
-              </Link>
-            )) : <p className="text-zinc-500 col-span-2">Nessun video trovato.</p>}
-          </div>
-        )}
-        
-        <div className="mt-16 text-center">
-          <Link href="/portfolio" className="text-zinc-400 hover:text-zinc-50 font-medium inline-flex items-center gap-2 transition-colors">
-            Esplora l'archivio completo <ChevronRight className="w-4 h-4" />
-          </Link>
+      {/* HEADER */}
+      <div className="w-full max-w-7xl mx-auto mb-20 md:mb-32">
+        <h2 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.05] mb-12 max-w-3xl">
+          {dict.title1} <br /> {dict.title2}
+        </h2>
+        <div className="flex w-full border-b border-white/10 pb-12">
+          <p className="text-lg md:text-xl font-medium leading-snug max-w-xl text-gray-200">
+            {dict.subtitle}
+          </p>
         </div>
       </div>
+
+      {/* EDITORIAL GRID */}
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+        {displayProjects.map((project, index) => {
+          const isEven = index % 2 !== 0
+          return (
+            <Link
+              href={`/${lang}/portfolio/${project.slug}`}
+              key={project._id || index}
+              className={`group flex flex-col gap-6 ${isEven ? 'md:mt-24' : ''}`}
+            >
+              {/* Image */}
+              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-[#111] border border-white/5">
+                {project.img && (
+                  <Image
+                    src={`${project.img}?w=1000&q=80&fit=max&auto=format`}
+                    alt={project.title || 'Project image'}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                )}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="bg-[#CCFF00] text-black text-[10px] font-bold tracking-widest uppercase px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    {dict.exploreBtn}
+                  </div>
+                </div>
+              </div>
+
+              {/* Text */}
+              <div className="flex flex-col px-2">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00]">
+                    {project.category || 'Case Study'}
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest text-gray-500">0{index + 1}</span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-medium mb-3 leading-snug text-white group-hover:text-gray-300 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-400 leading-relaxed max-w-md line-clamp-2">
+                  {project.description || dict.defaultDesc}
+                </p>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+
+      {/* BOTTOM CTA */}
+      <div className="w-full max-w-7xl mx-auto mt-24 pt-16 border-t border-white/10 flex justify-center">
+        <Link
+          href={`/${lang}/portfolio`}
+          className="inline-flex items-center justify-center bg-white text-black rounded-full px-12 py-5 text-xs font-bold tracking-widest uppercase hover:bg-[#CCFF00] hover:scale-105 transition-all duration-300 group shadow-lg shadow-black/50"
+        >
+          {dict.viewAll} <ArrowUpRight className="w-5 h-5 ml-3 group-hover:rotate-45 transition-transform" />
+        </Link>
+      </div>
+
     </section>
-  );
+  )
 }

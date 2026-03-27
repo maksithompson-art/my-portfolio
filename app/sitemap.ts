@@ -1,41 +1,41 @@
 import { MetadataRoute } from 'next'
 import { client } from '@/sanity/lib/client'
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // 1. Definisci il tuo URL base (cambialo quando avrai il dominio finale)
-  const baseUrl = 'https://maksithompson.com'
+const BASE_URL = 'https://maksithompson.com'
+const LOCALES = ['it', 'en', 'fr'] as const
 
-  // 2. Chiediamo a Sanity tutti i tuoi progetti e la data in cui li hai modificati l'ultima volta
-  const query = `*[_type == "project"]{ 
-    "slug": slug.current, 
-    _updatedAt 
-  }`
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Fetch all projects from Sanity
+  const query = `*[_type == "project"]{ "slug": slug.current, _updatedAt }`
   const projects = await client.fetch(query)
 
-  // 3. Creiamo le rotte per i singoli progetti dinamicamente
-  const projectUrls = projects.map((project: any) => ({
-    url: `${baseUrl}/portfolio/${project.slug}`,
-    lastModified: new Date(project._updatedAt),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8, // Priorità alta per i tuoi lavori
-  }))
-
-  // 4. Definiamo le rotte statiche del tuo sito (aggiungi qui se hai altre pagine come /about o /contact)
-  const staticUrls = [
-    {
-      url: `${baseUrl}`, // La Homepage
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 1.0, // Priorità massima
-    },
-    {
-      url: `${baseUrl}/portfolio`, // La pagina principale del portfolio
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
+  // Static pages — generate one entry per locale
+  const staticPages = [
+    { path: '', priority: 1.0, changeFrequency: 'monthly' as const },
+    { path: '/portfolio', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/servizi/sviluppo-siti-web', priority: 0.85, changeFrequency: 'monthly' as const },
+    { path: '/servizi/fotografia', priority: 0.85, changeFrequency: 'monthly' as const },
   ]
 
-  // 5. Uniamo tutto e lo restituiamo a Google
+  const staticUrls: MetadataRoute.Sitemap = staticPages.flatMap(({ path, priority, changeFrequency }) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE_URL}/${locale}${path}`,
+      lastModified: new Date(),
+      changeFrequency,
+      priority,
+    }))
+  )
+
+  // Dynamic project pages — one per locale per project
+  const projectUrls: MetadataRoute.Sitemap = projects.flatMap((project: { slug: string; _updatedAt: string }) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE_URL}/${locale}/portfolio/${project.slug}`,
+      lastModified: new Date(project._updatedAt),
+      changeFrequency: 'weekly' as const,
+      priority: 0.75,
+    }))
+  )
+
   return [...staticUrls, ...projectUrls]
 }

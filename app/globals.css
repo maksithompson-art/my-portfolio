@@ -1,28 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    /* 
+      Set the default background to dark. 
+      Anti-aliased makes the fonts look thinner and much more premium on Mac/iOS 
+    */
+    @apply bg-[#0A0A0A] text-white overflow-x-hidden antialiased selection:bg-[#CCFF00] selection:text-[#0A0A0A];
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Hides standard browser scrollbars for a cleaner, app-like feel */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

@@ -1,82 +1,129 @@
 "use client";
 
-import { useState } from 'react';
-import { User, Globe, Calendar, Code2, X, Maximize2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { User, Globe, Calendar, Code2, X, Maximize2, ArrowDown } from 'lucide-react';
 import { PortableText } from '@portabletext/react';
-import Image from 'next/image'; // 1. IMPORTIAMO NEXT/IMAGE
+import Image from 'next/image';
 
 export default function ProjectContent({ project }: { project: any }) {
-  // Stati per gestire le interazioni utente
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
-  const [isTextExpanded, setIsTextExpanded] = useState(false);
 
-  // Stili personalizzati per il testo di Sanity
   const portableTextComponents = {
     block: {
-      normal: ({children}: any) => <p className="mb-6">{children}</p>,
-      h3: ({children}: any) => <h3 className="text-2xl font-bold mt-12 mb-6 text-zinc-100">{children}</h3>,
-      blockquote: ({children}: any) => <blockquote className="border-l-4 border-emerald-500 pl-4 italic my-8 text-zinc-400">{children}</blockquote>,
+      normal: ({children}: any) => <p className="mb-8 text-gray-400 leading-relaxed text-lg md:text-xl">{children}</p>,
+      h3: ({children}: any) => <h3 className="text-2xl md:text-4xl font-medium mt-16 mb-8 text-white">{children}</h3>,
+      blockquote: ({children}: any) => (
+        <blockquote className="border-l-2 border-[#CCFF00] pl-8 py-2 italic my-12 text-white text-2xl md:text-3xl font-light leading-snug">
+          {children}
+        </blockquote>
+      ),
     },
   };
 
   return (
-    <>
-      <div className="flex flex-col lg:flex-row gap-16">
-        
-        {/* COLONNA PRINCIPALE (A SINISTRA) */}
-        <div className="flex-1">
-          <p className="text-emerald-400 font-bold mb-4 tracking-wider uppercase text-sm">{project.category}</p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 tracking-tight leading-[1.1]">{project.title}</h1>
+    <div className="w-full bg-[#0A0A0A] text-white selection:bg-[#CCFF00] selection:text-black">
+      
+      {/* 1. HERO HEADER SECTION */}
+      <header className="px-8 md:px-12 lg:px-24 pt-40 pb-20 border-b border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#CCFF00] bg-[#CCFF00]/10 px-4 py-2 rounded-full border border-[#CCFF00]/20">
+              {project.category}
+            </span>
+            <div className="h-[1px] w-12 bg-white/20" />
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500">{project.year}</span>
+          </div>
 
-          {/* 1. LA GALLERIA */}
+          <h1 className="text-5xl md:text-8xl lg:text-[5rem] font-black tracking-tighter leading-[0.95] uppercase mb-16">
+            {project.title}
+          </h1>
+
+          {/* QUICK STATS ROW */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-white/10">
+            <div>
+              <p className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mb-2">Cliente</p>
+              <p className="text-lg font-medium">{project.client || 'N/A'}</p>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mb-2">Ruolo</p>
+              <p className="text-lg font-medium">{project.role || 'Lead Creative'}</p>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mb-2">Settore</p>
+              <p className="text-lg font-medium">{project.category}</p>
+            </div>
+            <div className="flex flex-col items-end justify-center">
+              <div className="animate-bounce p-3 border border-white/20 rounded-full">
+                <ArrowDown className="w-5 h-5" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="px-8 md:px-12 lg:px-24 py-24">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* 2. THE CASE STUDY TEXT (Wider, more readable) */}
+          <div className="max-w-4xl mb-32">
+            <div className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-8">Informazioni sul Progetto</div>
+            {project.body ? (
+              <PortableText value={project.body} components={portableTextComponents} />
+            ) : (
+              <p className="text-xl text-gray-400 leading-relaxed">{project.description}</p>
+            )}
+            
+            {/* TECH STACK CHIPS */}
+            {project.techStack && project.techStack.length > 0 && (
+               <div className="mt-12 flex flex-wrap gap-3">
+                 {project.techStack.map((t: string) => (
+                   <span key={t} className="px-5 py-2 bg-white/5 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-[#CCFF00] hover:text-black transition-colors cursor-default">
+                     {t}
+                   </span>
+                 ))}
+               </div>
+            )}
+          </div>
+
+          {/* 3. MEDIA GALLERY (High-Impact Masonry) */}
           {project.gallery && project.gallery.length > 0 && (
-            <div className="mb-16">
-              <div className="columns-1 sm:columns-2 gap-4 space-y-4">
+            <div className="mb-32">
+              <div className="columns-1 md:columns-2 gap-8 space-y-8">
                 {project.gallery.map((imgUrl: string, index: number) => (
                   <div 
                     key={index} 
                     onClick={() => setLightboxImage(imgUrl)}
-                    // Per usare Next/Image con layout fill, il genitore DEVE essere relative
-                    // E per l'effetto masonry, dobbiamo dargli un'altezza minima per non farlo collassare
-                    className="relative break-inside-avoid rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-zoom-in w-full"
+                    className="relative break-inside-avoid rounded-[2rem] overflow-hidden bg-[#111] border border-white/5 group cursor-zoom-in"
                   >
-                    {/* 2. SOSTITUITO <img> CON <Image /> */}
                     <Image 
                       src={imgUrl} 
-                      alt={`Scatto ${index + 1} del progetto ${project.title}`} 
-                      width={800} // Dimensioni base per calcolare l'aspect ratio
-                      height={1200} // (Next.js le adatterà dinamicamente)
-                      sizes="(max-width: 640px) 100vw, 50vw" // Essenziale per le performance Responsive
-                      className="w-full h-auto transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
-                      // Non serve loading="lazy", Next.js lo fa in automatico!
+                      alt={`Gallery ${index}`} 
+                      width={1200} 
+                      height={1600} 
+                      className="w-full h-auto transition-transform duration-1000 group-hover:scale-105 ease-out" 
                     />
-                    
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center pointer-events-none z-10">
-                      <Maximize2 className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/30">
+                        <Maximize2 className="w-6 h-6 text-white" />
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           )}
-          
+
+          {/* 4. VIDEO SECTION (If applicable) */}
           {project.videoGallery && project.videoGallery.length > 0 && (
-            <div className="mb-16">
-              <h3 className="text-2xl font-bold mb-6 text-zinc-100">Video & Render</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="mb-32">
+              <h3 className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-12">Video & Motion</h3>
+              <div className="grid grid-cols-1 gap-12">
                 {project.videoGallery.map((vidUrl: string, index: number) => (
-                  <div 
-                    key={index} 
-                    className="relative rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-xl"
-                  >
+                  <div key={index} className="relative rounded-[3rem] overflow-hidden bg-[#111] border border-white/10 aspect-video shadow-2xl">
                     <video 
                       src={vidUrl} 
-                      autoPlay // Parte da solo
-                      loop // Ricomincia all'infinito (perfetto per i render 3D)
-                      muted // OBBLIGATORIO per far funzionare l'autoplay
-                      playsInline // OBBLIGATORIO per gli iPhone
-                      controls // Aggiunge i tasti play/pausa se l'utente vuole fermarlo
-                      className="w-full h-auto object-cover"
+                      autoPlay loop muted playsInline controls 
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 ))}
@@ -84,95 +131,19 @@ export default function ProjectContent({ project }: { project: any }) {
             </div>
           )}
 
-          {/* 2. IL TESTO (Con effetto "Leggi Tutto") */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Case Study</h2>
-            
-            <div className="relative">
-              <div className={`text-lg md:text-xl text-zinc-300 leading-relaxed prose-invert transition-all duration-500 ${isTextExpanded ? '' : 'max-h-[300px] overflow-hidden'}`}>
-                {project.body ? (
-                  <PortableText value={project.body} components={portableTextComponents} />
-                ) : (
-                  <p>{project.description}</p>
-                )}
-              </div>
-
-              {!isTextExpanded && project.body && (
-                <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-zinc-950 to-transparent flex items-end justify-center pb-2">
-                  <button 
-                    onClick={() => setIsTextExpanded(true)}
-                    className="bg-zinc-900 border border-zinc-700 hover:border-emerald-500 text-zinc-100 px-6 py-3 rounded-full font-medium transition-all shadow-xl hover:shadow-emerald-500/10 z-10 translate-y-4"
-                  >
-                    Espandi Case Study
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
+      </main>
 
-        {/* COLONNA LATERALE (I DETTAGLI TECNICI) */}
-        <div className="lg:w-80 shrink-0">
-          <div className="p-8 bg-zinc-900/50 border border-zinc-800 rounded-3xl space-y-8 sticky top-32">
-            {project.role && (
-              <div>
-                <p className="text-sm text-zinc-500 mb-2 flex items-center gap-2"><User className="w-4 h-4"/> Ruolo</p>
-                <p className="font-semibold text-zinc-200 text-lg">{project.role}</p>
-              </div>
-            )}
-            {project.client && (
-              <div>
-                <p className="text-sm text-zinc-500 mb-2 flex items-center gap-2"><Globe className="w-4 h-4"/> Cliente</p>
-                <p className="font-semibold text-zinc-200 text-lg">{project.client}</p>
-              </div>
-            )}
-            {project.year && (
-              <div>
-                <p className="text-sm text-zinc-500 mb-2 flex items-center gap-2"><Calendar className="w-4 h-4"/> Anno</p>
-                <p className="font-semibold text-zinc-200 text-lg">{project.year}</p>
-              </div>
-            )}
-            {project.techStack && project.techStack.length > 0 && (
-              <div>
-                <p className="text-sm text-zinc-500 mb-4 flex items-center gap-2"><Code2 className="w-4 h-4"/> Tecnologie</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((t: string) => (
-                    <span key={t} className="px-3 py-1.5 bg-zinc-950 border border-zinc-800 text-zinc-300 text-xs rounded-lg font-medium shadow-sm">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-      </div>
-
-      {/* 3. IL LIGHTBOX */}
+      {/* LIGHTBOX */}
       {lightboxImage && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in duration-300"
           onClick={() => setLightboxImage(null)} 
         >
-          <button 
-            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 p-2 rounded-full backdrop-blur-md transition-colors"
-            onClick={() => setLightboxImage(null)}
-          >
-            <X className="w-8 h-8" />
-          </button>
-          
-          {/* Nel lightbox possiamo mantenere <img> standard per semplicità, 
-              poiché l'immagine è già stata scaricata o è in cache e non 
-              impatta il caricamento iniziale della pagina */}
-          <img 
-            src={lightboxImage} 
-            alt="Immagine ingrandita" 
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            onClick={(e) => e.stopPropagation()} 
-          />
+          <button className="absolute top-8 right-8 text-white hover:text-[#CCFF00] transition-colors"><X className="w-10 h-10" /></button>
+          <img src={lightboxImage} alt="Fullscreen" className="max-w-full max-h-[90vh] object-contain rounded-xl" />
         </div>
       )}
-    </>
+    </div>
   );
 }

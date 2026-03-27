@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "home": {
+      "title": "Maksi Thompson | Studio Digital — Web, 3D & Photographie",
+      "description": "Studio Digital basé à Turin, Italie. Développement web haute performance, rendu 3D (CGI) et photographie commerciale pour les marques haut de gamme.",
+      "keywords": ["création site web", "agence web Turin", "développeur web", "photographe commercial", "photographie restaurant", "rendu 3D", "artiste CGI", "direction artistique", "développement e-commerce", "développeur Next.js"]
+    },
+    "about": {
+      "title": "À Propos | Maksi Thompson — Tech Lead & Photographe",
+      "description": "Tech Lead, Développeur Full-Stack, Photographe Commercial et Directeur Artistique à Turin. Parcours international : Festival de Cannes, XRHome Pays-Bas, Grand Prix de Monaco."
+    },
+    "portfolio": {
+      "title": "Archive | Développement Web, Direction Artistique & Photographie",
+      "description": "Explorez l'archive complète des projets de Maksi Thompson. Écosystèmes visuels, plateformes web hautes performances et stratégies digitales pour les marques ambitieuses."
+    },
+    "webdev": {
+      "title": "Agence Création Site Web | Web App & E-commerce | Maksi Thompson",
+      "description": "Développeur web full-stack basé à Turin. Sites web sur mesure, Web Apps, E-commerce pour restaurants et entreprises. Design UI/UX haute performance en Next.js."
+    },
+    "photography": {
+      "title": "Photographie Commerciale & Rendu 3D | Maksi Thompson",
+      "description": "Services de Direction Artistique à Turin. Photographie pour restaurants, événements corporate, identité de marque et rendu 3D (CGI) pour l'architecture et le produit."
+    }
+  },
+  "nav": {
+    "home": "Accueil",
+    "cases": "Projets +",
+    "web": "Sites Web",
+    "photo3d": "Photo & 3D",
+    "about": "À Propos",
+    "contact": "Prendre Contact",
+    "directory": "Répertoire // Plan",
+    "switchLang": "Langue",
+    "languages": { "it": "IT", "fr": "FR", "en": "EN" }
+  },
+  "hero": {
+    "name": "MAKSI THOMPSON",
+    "headline1": "CRÉATION DE SITES WEB",
+    "headline2": "& CONTENUS",
+    "headline3": "MARKETING.",
+    "service1": "SITES WEB",
+    "service2": "RENDU 3D",
+    "service3": "PHOTOGRAPHIE",
+    "description": "J'offre aux entreprises locales et aux marques un point de référence unique à Turin pour le développement web et la création de contenus marketing.",
+    "stat1Label": "Définissez votre",
+    "stat1Accent": "Brand Identity.",
+    "stat1Title": "Autorité",
+    "stat1Sub": "Nous élevons la valeur perçue de votre entreprise",
+    "stat2Title": "Performance",
+    "stat2Sub": "Taux de conversion moyen sur les projets web"
+  },
+  "expertise": {
+    "bigTitle1": "SITES",
+    "bigTitle2": "WEB",
+    "subTitle1": "JE CRÉE",
+    "subTitle2": "DES SITES WEB",
+    "subTitle3": "& CONTENUS MARKETING",
+    "card1Title": "Développement Web & E-Commerce",
+    "card1Desc": "Création de plateformes web rapides, sécurisées et optimisées pour les moteurs de recherche (SEO). Oubliez les templates lents — j'écris des architectures sur mesure orientées conversion.",
+    "card1Feat1": "Frontend moderne (React & Next.js)",
+    "card1Feat2": "Backend et bases de données scalables",
+    "card2Title": "Photographie & Rendu 3D",
+    "card2Desc": "L'esthétique vend. Je réalise des shootings photo professionnels pour mettre en valeur l'identité de votre marque. Des images parfaites pour votre site web ou vos campagnes sociales.",
+    "card2Feat1": "Photo Restaurants & Événements",
+    "card2Feat2": "Photo E-Commerce",
+    "card2Feat3": "Photo Corporate & Portraits",
+    "card3Title": "Production Vidéo",
+    "card3Desc": "Storytelling cinématographique pour capter l'attention. De la pré-production au color grading, je produis des vidéos d'entreprise et des spots publicitaires qui racontent votre excellence.",
+    "card3Feat1": "Vidéos d'Entreprise & Spots",
+    "card3Feat2": "Contenus pour Réseaux Sociaux",
+    "footerText": "Je suis Maksi, développeur web Full-Stack et photographe commercial à Turin. Je crée des plateformes web performantes, des sites e-commerce et des narrations visuelles conçues pour apporter une valeur concrète et répondre aux besoins réels du marché actuel.",
+    "cta": "DÉCOUVRIR LES SERVICES"
+  },
+  "visualExpertise": {
+    "subTitle": "Direction Artistique",
+    "subTitleBadge": "VISUELS",
+    "card1Title": "Rendu 3D & CGI",
+    "card1Desc": "Je développe des environnements virtuels, des visualisations architecturales photoréalistes et du product rendering. J'utilise la CGI pour présenter votre produit dans des scénarios impossibles ou avant même sa fabrication, réduisant les coûts de production physique.",
+    "card1Feat1": "Visualisation Architecturale",
+    "card1Feat2": "Product Rendering & E-Commerce",
+    "card1Feat3": "Animation 3D & VFX",
+    "card1Feat4": "Réalité Virtuelle (VR / AR)",
+    "card2Title": "Photographie Commerciale",
+    "card2Desc": "Storytelling visuel pour valoriser l'image de votre marque. Images premium conçues spécifiquement pour les sites web, les campagnes sociales et les menus digitaux.",
+    "card2Feat1": "Food & Restauration",
+    "card2Feat2": "Événements & Corporate",
+    "card2Feat3": "Direction Artistique Incluse",
+    "footerText": "J'intègre le développement technique à une direction artistique haut de gamme. La combinaison de code natif et de contenus visuels premium (3D/Photo) garantit que votre marque communique autorité dès le premier regard.",
+    "cta": "Explorer le Portfolio"
+  },
+  "marquee": {
+    "services": ["CRÉATION SITES WEB", "RENDU 3D", "PHOTOGRAPHIE", "MARKETING", "E-COMMERCE", "BRAND IDENTITY"]
+  },
+  "selectedWork": {
+    "title1": "Production de Contenus Visuels &",
+    "title2": "Développement Digital.",
+    "subtitle": "Une sélection de mes projets de développement web et campagnes visuelles.",
+    "exploreBtn": "Voir le Projet",
+    "defaultDesc": "Découvrez ce projet de design et développement digital.",
+    "viewAll": "Voir Tous les Projets"
+  },
+  "contact": {
+    "available": "Disponible pour de nouveaux projets",
+    "headline1": "DONNONS VIE",
+    "headline2": "À L'IDÉE.",
+    "description": "Vous avez un projet en tête ? Remplissez le formulaire pour demander une consultation gratuite. Je vous répondrai sous 24 heures.",
+    "directContactLabel": "Contact Direct",
+    "labelName": "Votre nom",
+    "placeholderName": "Jean Dupont",
+    "labelEmail": "Adresse email",
+    "placeholderEmail": "jean@entreprise.fr",
+    "labelService": "De quoi avez-vous besoin ?",
+    "option1": "Création Site Web / E-Commerce",
+    "option2": "Shooting Photo",
+    "option3": "Production Vidéo",
+    "option4": "Rendu 3D",
+    "option5": "Autre...",
+    "labelMessage": "Parlez-moi du projet",
+    "placeholderMessage": "Décrivez brièvement vos objectifs...",
+    "submitBtn": "Envoyer la Demande"
+  },
+  "footer": {
+    "locationTitle": "Localisation",
+    "locationCity": "Turin, Piémont",
+    "locationCountry": "Italie",
+    "locationRemote": "Disponible Partout",
+    "socialsTitle": "Réseaux",
+    "sitemapTitle": "Plan du Site",
+    "home": "Accueil",
+    "cases": "Projets",
+    "about": "À Propos",
+    "rights": "Tous droits réservés."
+  },
+  "about": {
+    "locationBadge": "Basé à Turin, Italie",
+    "title1": "Deux Mondes.",
+    "title2": "Une Vision.",
+    "bio1": "La plupart des professionnels choisissent une voie : logique structurée ou esthétique créative. Mon parcours international m'a permis de les fusionner. En tant que <strong>Tech Lead & Développeur Full-Stack</strong>, je construis l'infrastructure invisible et le code propre qui fait évoluer votre entreprise.",
+    "bio2": "En tant que <strong>Photographe, Directeur Artistique et Cinéaste</strong> — avec une expérience allant des tapis rouges du Festival de Cannes à la direction artistique 3D aux Pays-Bas — je capture l'émotion visuelle qui fait tomber vos clients amoureux.",
+    "bio3": "L'union de ces disciplines me permet de livrer des écosystèmes digitaux complets, cohérents et impossibles à ignorer.",
+    "skillsLabel": "Compétences",
+    "skillsTitle": "Mon Arsenal.",
+    "box1Title": "Frontend & Engineering",
+    "box1Desc": "Je construis des interfaces modernes, accessibles et incroyablement rapides, sans compromis sur le design.",
+    "box2Title": "Matériel Visuel",
+    "box2Desc": "Équipement de qualité cinéma pour des résultats exceptionnels.",
+    "box3Title": "Backend & DB",
+    "box4Title": "SEO & Core Web Vitals",
+    "box4Desc": "Je ne crée pas seulement des sites esthétiquement parfaits. Je les optimise de manière obsessionnelle pour dominer les recherches Google et garantir des temps de chargement inférieurs à la seconde.",
+    "timelineLabel": "Parcours",
+    "timelineTitle": "Expérience Internationale.",
+    "timelineSub": "Du Festival de Cannes au développement technologique en Europe du Nord.",
+    "showMore": "Développer la Chronologie",
+    "ctaTitle": "Prêt à élever votre marque ?",
+    "ctaBtn": "Commençons le projet",
+    "timeline": [
+      { "year": "Jan 2023 — Présent", "role": "Co-Fondateur & Tech Lead", "company": "Sailing Studios | Piémont, Italie", "desc": "Développement de solutions marketing exclusives combinant Web Development, rendu 3D et animation. Aide les marques à établir une identité digitale unique pour se démarquer sur le marché." },
+      { "year": "Jan 2019 — Jan 2023", "role": "PDG & Directeur Artistique 3D", "company": "XRHome | Pays-Bas", "desc": "Direction artistique et conseil pour visualisations 3D, animation, VFX et Réalité Virtuelle/Augmentée (VR/AR). Gestion de projets complexes dans le secteur ICT." },
+      { "year": "Oct 2019 — Nov 2019", "role": "Photographe de Plateau (Film)", "company": "Goldfinch | Royaume-Uni", "desc": "Photographe officiel sur le tournage du thriller psychologique 'Gatecrash'. Gestion des photos promotionnelles et des coulisses pour la production cinématographique." },
+      { "year": "Avr 2018 — Juin 2019", "role": "Photographe Officiel", "company": "Marché du Film — Festival de Cannes | France", "desc": "Couverture visuelle officielle des conférences de presse, événements et spectacles. Editing rapide et livraison des photos sous 24 heures pour la presse internationale." },
+      { "year": "Mai 2018", "role": "Photographe Sportif", "company": "Monaco Grand Prix Historique | Monaco", "desc": "Photographe officiel au bord de la piste pour la célèbre course historique du Grand Prix de Monaco." },
+      { "year": "Oct 2017 — Mars 2019", "role": "Instructeur de Photographie", "company": "Thompson Photography | Royaume-Uni", "desc": "Enseignement de techniques photographiques avancées à des classes internationales, organisation de voyages photographiques et gestion complète des cours." },
+      { "year": "Mai 2017 — Juin 2017", "role": "Photographe de Mode", "company": "Lafayette Galleries | France", "desc": "Organisation et direction de shootings de mode. Couverture d'événements fashion sur la Côte d'Azur avec livraison d'assets multimédia haute résolution en moins de 24 heures." },
+      { "year": "Juil 2016 — Août 2016", "role": "Photographe Événementiel", "company": "Les Plages Électroniques | Cannes, France", "desc": "Photographe officiel de l'un des plus grands festivals musicaux européens, capturant l'énergie de l'événement pour les canaux promotionnels officiels." }
+    ]
+  },
+  "portfolio": {
+    "indexLabel": "Index_001",
+    "title1": "SELECTED",
+    "title2": "WORKS.",
+    "intro": "Une sélection de plateformes web, d'identités visuelles et de direction artistique. Nous construisons des écosystèmes digitaux pour les marques qui veulent dominer leur marché.",
+    "projectsIndexed": "Projets Indexés",
+    "scrollLabel": "Parcourir l'archive",
+    "cat1Title": "Web & App",
+    "cat1Desc": "React, Next.js, Architectures Scalables",
+    "cat2Title": "3D & VR",
+    "cat2Desc": "Rendu Automobile, Animation",
+    "cat3Title": "Photographie",
+    "cat3Desc": "Corporate, Mode, Événements",
+    "cat4Title": "Cinéma",
+    "cat4Desc": "Cinématographie, Spots & Documentaires",
+    "noProjects": "Aucun projet dans",
+    "publishHint": "Publiez de nouveaux contenus depuis Sanity Studio",
+    "exploreProject": "Voir le Projet"
+  }
+}

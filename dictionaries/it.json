@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "home": {
+      "title": "Maksi Thompson | Digital Studio Torino",
+      "description": "Digital Studio a Torino. Sviluppo di ecosistemi web ad altissime prestazioni, 3D rendering (CGI) e fotografia commerciale per brand di fascia alta.",
+      "keywords": ["sviluppo siti web Torino", "web agency Torino", "web developer", "fotografo commerciale Torino", "fotografo ristoranti", "3D rendering Torino", "CGI artist", "art direction", "sviluppo e-commerce custom", "Next.js developer Italia"]
+    },
+    "about": {
+      "title": "Chi Sono | Maksi Thompson — Tech Lead & Fotografo Torino",
+      "description": "Tech Lead, Full-Stack Developer, Fotografo Commerciale e Art Director a Torino. Percorso internazionale: Festival di Cannes, XRHome Paesi Bassi, Monaco Grand Prix."
+    },
+    "portfolio": {
+      "title": "L'Archivio | Sviluppo Web, Art Direction & Fotografia",
+      "description": "Esplora l'archivio completo dei progetti firmati Maksi Thompson. Ecosistemi visivi, piattaforme web performanti e strategie digitali per brand ambiziosi."
+    },
+    "webdev": {
+      "title": "Agenzia Sviluppo Siti Web Torino | Web App & E-commerce | Maksi Thompson",
+      "description": "Sviluppatore web full-stack a Torino. Preventivi siti web, Web App custom, E-commerce per ristoranti e aziende. UI/UX Design ad alte prestazioni in Next.js."
+    },
+    "photography": {
+      "title": "Fotografia Commerciale & 3D Rendering Torino | Maksi Thompson",
+      "description": "Servizi di Art Direction a Torino. Fotografia per ristoranti, eventi corporate, brand identity e 3D rendering (CGI) per architettura e prodotto."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "cases": "Cases +",
+    "web": "Siti Web",
+    "photo3d": "Foto & 3D",
+    "about": "About",
+    "contact": "Initialize Contact",
+    "directory": "Directory // Map",
+    "switchLang": "Lingua",
+    "languages": { "it": "IT", "fr": "FR", "en": "EN" }
+  },
+  "hero": {
+    "name": "MAKSI THOMPSON",
+    "headline1": "SVILUPPO SITI WEB",
+    "headline2": "& CONTENUTI",
+    "headline3": "MARKETING.",
+    "service1": "SITI WEB",
+    "service2": "3D RENDERING",
+    "service3": "FOTOGRAFIA",
+    "description": "Offro alle attività locali e ai brand un unico punto di riferimento a Torino per lo sviluppo di siti web e la creazione di contenuti marketing.",
+    "stat1Label": "Definisci la tua",
+    "stat1Accent": "Brand Identity.",
+    "stat1Title": "Autorità",
+    "stat1Sub": "Eleviamo il valore percepito del business",
+    "stat2Title": "Performance",
+    "stat2Sub": "Tasso di conversione medio sui progetti web"
+  },
+  "expertise": {
+    "bigTitle1": "SITI",
+    "bigTitle2": "WEB",
+    "subTitle1": "CREO",
+    "subTitle2": "SITI WEB",
+    "subTitle3": "E CONTENUTI MARKETING",
+    "card1Title": "Sviluppo Siti Web & E-Commerce",
+    "card1Desc": "Realizzazione di piattaforme web veloci, sicure e ottimizzate per i motori di ricerca (SEO). Dimentica i template lenti: scrivo architetture custom orientate alla conversione.",
+    "card1Feat1": "Frontend moderno (React & Next.js)",
+    "card1Feat2": "Backend e Database scalabili",
+    "card2Title": "Fotografia & 3D Rendering",
+    "card2Desc": "L'estetica vende. Realizzo shooting fotografici professionali per esaltare l'identità del tuo brand. Immagini perfette per il tuo nuovo sito web o le campagne social.",
+    "card2Feat1": "Foto per Ristoranti & Eventi",
+    "card2Feat2": "Foto E-Commerce",
+    "card2Feat3": "Foto Corporate & Ritratti",
+    "card3Title": "Produzione Video",
+    "card3Desc": "Storytelling cinematografico per catturare l'attenzione. Dalla pre-produzione al color grading, realizzo video aziendali e spot pubblicitari che raccontano la tua eccellenza.",
+    "card3Feat1": "Video Aziendali & Spot",
+    "card3Feat2": "Contenuti per Social Media",
+    "footerText": "Sono Maksi, Web Developer Full-Stack e Fotografo Commerciale a Torino. Realizzo piattaforme web performanti, siti e-commerce e narrazioni visive pensate per offrire valore concreto e rispondere alle reali esigenze del mercato attuale.",
+    "cta": "SCOPRI I SERVIZI"
+  },
+  "visualExpertise": {
+    "subTitle": "Direzione Artistica",
+    "subTitleBadge": "VISUALS",
+    "card1Title": "3D Rendering & CGI",
+    "card1Desc": "Sviluppo ambienti virtuali, visualizzazioni architettoniche fotorealistiche e product rendering. Sfrutto la computer grafica (CGI) per mostrare il tuo prodotto in scenari impossibili o prima ancora che venga costruito, abbattendo i costi fisici di produzione.",
+    "card1Feat1": "Visualizzazione Architettonica",
+    "card1Feat2": "Product Rendering & E-Commerce",
+    "card1Feat3": "Animazione 3D & VFX",
+    "card1Feat4": "Realtà Virtuale (VR / AR)",
+    "card2Title": "Fotografia Commerciale",
+    "card2Desc": "Storytelling visivo per esaltare il valore percepito del tuo brand. Immagini premium studiate appositamente per siti web, campagne social e menu digitali.",
+    "card2Feat1": "Food & Ristorazione",
+    "card2Feat2": "Eventi & Corporate",
+    "card2Feat3": "Art Direction Inclusa",
+    "footerText": "Integro la componente di sviluppo tecnico con una direzione artistica di fascia alta. La combinazione di codice nativo e contenuti visivi premium (3D/Foto) garantisce che il tuo brand comunichi autorità fin dal primo impatto.",
+    "cta": "Esplora Portfolio"
+  },
+  "marquee": {
+    "services": ["SVILUPPO SITI WEB", "3D RENDERING", "FOTOGRAFIA", "MARKETING", "E-COMMERCE", "BRAND IDENTITY"]
+  },
+  "selectedWork": {
+    "title1": "Produzione Contenuti Visivi &",
+    "title2": "Sviluppo Digitale.",
+    "subtitle": "Una selezione dei miei progetti di sviluppo web e campagne visive.",
+    "exploreBtn": "Esplora Progetto",
+    "defaultDesc": "Scopri di più su questo progetto di design e sviluppo digitale.",
+    "viewAll": "Vedi Tutti I Progetti"
+  },
+  "contact": {
+    "available": "Disponibile per nuovi progetti",
+    "headline1": "DIAMO VITA",
+    "headline2": "ALL'IDEA.",
+    "description": "Hai un progetto in mente? Compila il form per richiedere una consulenza gratuita. Ti risponderò entro 24 ore.",
+    "directContactLabel": "Contatto Diretto",
+    "labelName": "Il tuo nome",
+    "placeholderName": "Mario Rossi",
+    "labelEmail": "Indirizzo Email",
+    "placeholderEmail": "mario@azienda.it",
+    "labelService": "Di cosa hai bisogno?",
+    "option1": "Sviluppo Sito Web / E-Commerce",
+    "option2": "Servizio Fotografico",
+    "option3": "Produzione Video",
+    "option4": "Rendering 3D",
+    "option5": "Altro...",
+    "labelMessage": "Parlami del progetto",
+    "placeholderMessage": "Descrivi brevemente i tuoi obiettivi...",
+    "submitBtn": "Invia Richiesta"
+  },
+  "footer": {
+    "locationTitle": "Sede",
+    "locationCity": "Torino, Piemonte",
+    "locationCountry": "Italia",
+    "locationRemote": "Disponibile Worldwide",
+    "socialsTitle": "Social",
+    "sitemapTitle": "Mappa del Sito",
+    "home": "Home",
+    "cases": "Cases",
+    "about": "About",
+    "rights": "Tutti i diritti riservati."
+  },
+  "about": {
+    "metaTitle": "Chi Sono | Maksi Thompson — Tech Lead & Fotografo Torino",
+    "metaDesc": "Tech Lead, Full-Stack Developer, Fotografo Commerciale e Art Director a Torino. Percorso internazionale: Festival di Cannes, XRHome Paesi Bassi, Monaco Grand Prix.",
+    "locationBadge": "Basato a Torino, Italia",
+    "title1": "Due Mondi.",
+    "title2": "Una Visione.",
+    "bio1": "La maggior parte dei professionisti sceglie una strada: logica strutturata o estetica creativa. Il mio percorso internazionale mi ha permesso di fonderle. Come <strong>Tech Lead & Sviluppatore Full-Stack</strong>, costruisco l'infrastruttura invisibile e il codice pulito che fa scalare il tuo business.",
+    "bio2": "Come <strong>Fotografo, Art Director e Filmmaker</strong> — con un'esperienza che spazia dai red carpet del Festival di Cannes alla direzione artistica 3D nei Paesi Bassi — catturo l'emozione visiva che fa innamorare i tuoi clienti.",
+    "bio3": "L'unione di queste discipline mi permette di consegnare ecosistemi digitali completi, coesi e impossibili da ignorare.",
+    "skillsLabel": "Competenze",
+    "skillsTitle": "Il mio Arsenale.",
+    "box1Title": "Frontend & Engineering",
+    "box1Desc": "Costruisco interfacce moderne, accessibili e incredibilmente veloci, senza compromessi sul design.",
+    "box2Title": "Visual Gear",
+    "box2Desc": "Equipaggiamento cinema-grade per risultati eccellenti.",
+    "box3Title": "Backend & DB",
+    "box4Title": "SEO & Core Web Vitals",
+    "box4Desc": "Non faccio solo siti esteticamente perfetti. Li ottimizzo maniacalmente per dominare le ricerche Google e garantire tempi di caricamento sotto il secondo, essenziali per la conversione.",
+    "timelineLabel": "Background",
+    "timelineTitle": "Esperienza Internazionale.",
+    "timelineSub": "Dal Festival di Cannes allo sviluppo tecnologico nel Nord Europa.",
+    "showMore": "Espandi Cronologia",
+    "ctaTitle": "Pronto per elevare il tuo brand?",
+    "ctaBtn": "Iniziamo il progetto",
+    "timeline": [
+      { "year": "Gen 2023 — Presente", "role": "Co-Founder & Tech Lead", "company": "Sailing Studios | Piemonte, Italia", "desc": "Sviluppo di soluzioni marketing esclusive che uniscono Web Development, 3D rendering e animazione. Aiuto i brand a stabilire un'identità digitale unica per distinguersi nel mercato." },
+      { "year": "Gen 2019 — Gen 2023", "role": "CEO & 3D Art Director", "company": "XRHome | Paesi Bassi", "desc": "Direzione artistica e consulenza per visualizzazioni 3D, animazione, VFX e Realtà Virtuale/Aumentata (VR/AR). Gestione di progetti complessi nel settore ICT." },
+      { "year": "Ott 2019 — Nov 2019", "role": "Fotografo di Scena (Film)", "company": "Goldfinch | Regno Unito", "desc": "Fotografo ufficiale sul set del thriller psicologico 'Gatecrash'. Gestione scatti promozionali e dietro le quinte per la produzione cinematografica." },
+      { "year": "Apr 2018 — Giu 2019", "role": "Official Photographer", "company": "Marché du Film — Festival de Cannes | Francia", "desc": "Copertura visiva ufficiale di conferenze stampa, eventi e spettacoli. Editing rapido e consegna degli scatti entro 24 ore per la stampa internazionale." },
+      { "year": "Mag 2018", "role": "Sport Photographer", "company": "Monaco Grand Prix Historique | Monaco", "desc": "Fotografo ufficiale a bordo pista per la storica gara automobilistica del Gran Premio di Monaco." },
+      { "year": "Ott 2017 — Mar 2019", "role": "Istruttore di Fotografia", "company": "Thompson Photography | Regno Unito", "desc": "Insegnamento di tecniche fotografiche avanzate a classi internazionali, organizzazione di viaggi fotografici e gestione completa dei corsi." },
+      { "year": "Mag 2017 — Giu 2017", "role": "Fashion Photographer", "company": "Lafayette Galleries | Francia", "desc": "Organizzazione e direzione di photoshoot di moda. Copertura eventi fashion in Costa Azzurra con consegna asset multimediali in meno di 24 ore." },
+      { "year": "Lug 2016 — Ago 2016", "role": "Event Photographer", "company": "Les Plages Électroniques | Cannes, Francia", "desc": "Fotografo ufficiale per uno dei maggiori festival musicali europei, catturando l'energia dell'evento per i canali promozionali ufficiali." }
+    ]
+  },
+  "portfolio": {
+    "indexLabel": "Index_001",
+    "title1": "SELECTED",
+    "title2": "WORKS.",
+    "intro": "Una selezione curata di piattaforme web, identità visive e art direction. Costruiamo ecosistemi digitali per brand che vogliono dominare il loro mercato.",
+    "projectsIndexed": "Progetti Indicizzati",
+    "scrollLabel": "Scorri l'archivio",
+    "cat1Title": "Web & App",
+    "cat1Desc": "React, Next.js, Architetture Scalabili",
+    "cat2Title": "3D & VR",
+    "cat2Desc": "Rendering Automotive, Animazione",
+    "cat3Title": "Fotografia",
+    "cat3Desc": "Corporate, Fashion, Eventi",
+    "cat4Title": "Filmmaking",
+    "cat4Desc": "Cinematography, Spot & Documentari",
+    "noProjects": "Nessun progetto in",
+    "publishHint": "Pubblica nuovi contenuti da Sanity Studio",
+    "exploreProject": "Esplora Progetto"
+  }
+}

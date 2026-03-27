@@ -1,89 +1,107 @@
-"use client";
+import { ArrowUpRight } from 'lucide-react'
 
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
-import { useState } from 'react';
+interface ContactDict {
+  available: string
+  headline1: string
+  headline2: string
+  description: string
+  directContactLabel: string
+  labelName: string
+  placeholderName: string
+  labelEmail: string
+  placeholderEmail: string
+  labelService: string
+  option1: string
+  option2: string
+  option3: string
+  option4: string
+  option5: string
+  labelMessage: string
+  placeholderMessage: string
+  submitBtn: string
+}
 
-export default function Contact() {
-  // Gestiamo lo stato del bottone (normale, caricamento, inviato, errore)
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("submitting");
-
-    const formData = new FormData(e.currentTarget);
-
-    try {
-      // INCOLLA QUI IL TUO LINK FORMSPREE
-      const response = await fetch("https://formspree.io/f/xdapneqv", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        (e.target as HTMLFormElement).reset(); // Svuota i campi del form
-        
-        // Riporta il bottone allo stato normale dopo 3 secondi
-        setTimeout(() => setStatus("idle"), 3000);
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
-      setStatus("error");
-    }
-  };
-
+export default function Contact({ dict }: { dict: ContactDict }) {
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
-      
-      <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-4xl">
-        <div className="bg-zinc-900 border border-zinc-800 rounded-[2.5rem] p-10 md:p-16 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Got an idea?<br/>Let's build it.</h2>
-          <p className="text-zinc-400 text-lg mb-10 max-w-xl mx-auto">
-            Whether you need a scalable web application or a compelling brand video, I'm currently accepting new freelance projects.
-          </p>
-          
-          {/* Ho collegato la funzione handleSubmit qui */}
-          <form className="max-w-md mx-auto space-y-4 text-left" onSubmit={handleSubmit}>
-            <div>
-              <label className="sr-only">Name</label>
-              {/* NOTA: Ho aggiunto name="name" */}
-              <input type="text" name="name" placeholder="Your Name" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-zinc-50" required />
+    <section id="contact" className="relative w-full bg-[#0A0A0A] text-white py-32 px-8 md:px-12 lg:px-24 rounded-t-[3rem] -mt-10 z-20">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+        {/* LEFT: Typography & Info */}
+        <div className="flex flex-col justify-between">
+          <div>
+            <p className="text-[#CCFF00] text-sm font-bold tracking-widest uppercase mb-6 flex items-center gap-4">
+              <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
+              {dict.available}
+            </p>
+            <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-medium tracking-tighter leading-[0.9] mb-8">
+              {dict.headline1} <br /> {dict.headline2}
+            </h2>
+            <p className="text-gray-400 text-lg max-w-md leading-relaxed">{dict.description}</p>
+          </div>
+          <div className="mt-16 lg:mt-0 hidden lg:block">
+            <p className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-2">{dict.directContactLabel}</p>
+            <a href="mailto:hello@maksithompson.com" className="text-2xl font-medium hover:text-[#CCFF00] transition-colors">
+              maksithompson50@gmail.com
+            </a>
+          </div>
+        </div>
+
+        {/* RIGHT: Contact Form */}
+        <div className="w-full bg-[#111111] p-8 md:p-12 rounded-[2rem] border border-white/5">
+          <form action="https://formspree.io/f/xkgbpjpl" method="POST" className="flex flex-col gap-8">
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className="text-[10px] font-bold tracking-widest uppercase text-gray-400">{dict.labelName}</label>
+              <input
+                type="text" name="name" id="name" required
+                className="w-full bg-transparent border-b border-white/20 pb-4 text-white focus:outline-none focus:border-[#CCFF00] transition-colors placeholder:text-white/20 text-lg"
+                placeholder={dict.placeholderName}
+              />
             </div>
-            <div>
-              <label className="sr-only">Email</label>
-              {/* NOTA: Ho aggiunto name="email" */}
-              <input type="email" name="email" placeholder="Your Email" className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-zinc-50" required />
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="text-[10px] font-bold tracking-widest uppercase text-gray-400">{dict.labelEmail}</label>
+              <input
+                type="email" name="email" id="email" required
+                className="w-full bg-transparent border-b border-white/20 pb-4 text-white focus:outline-none focus:border-[#CCFF00] transition-colors placeholder:text-white/20 text-lg"
+                placeholder={dict.placeholderEmail}
+              />
             </div>
-            <div>
-              <label className="sr-only">Message</label>
-              {/* NOTA: Ho aggiunto name="message" */}
-              <textarea name="message" placeholder="Tell me about your project..." rows={4} className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all text-zinc-50 resize-none" required></textarea>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="service" className="text-[10px] font-bold tracking-widest uppercase text-gray-400">{dict.labelService}</label>
+              <select
+                name="service" id="service"
+                className="w-full bg-transparent border-b border-white/20 pb-4 text-white focus:outline-none focus:border-[#CCFF00] transition-colors appearance-none text-lg cursor-pointer [&>option]:bg-[#111111]"
+              >
+                <option value="web">{dict.option1}</option>
+                <option value="photo">{dict.option2}</option>
+                <option value="video">{dict.option3}</option>
+                <option value="3d">{dict.option4}</option>
+                <option value="other">{dict.option5}</option>
+              </select>
             </div>
-            
-            {/* Bottone dinamico basato sullo stato */}
-            <button 
-              type="submit" 
-              disabled={status === "submitting" || status === "success"}
-              className="w-full bg-zinc-50 text-zinc-950 font-bold text-lg rounded-xl px-5 py-4 hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="message" className="text-[10px] font-bold tracking-widest uppercase text-gray-400">{dict.labelMessage}</label>
+              <textarea
+                name="message" id="message" required rows={4}
+                className="w-full bg-transparent border-b border-white/20 pb-4 text-white focus:outline-none focus:border-[#CCFF00] transition-colors placeholder:text-white/20 text-lg resize-none"
+                placeholder={dict.placeholderMessage}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="mt-4 flex items-center justify-center gap-3 bg-white text-black w-full py-5 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#CCFF00] transition-colors group"
             >
-              {status === "idle" && <>Send Message <ArrowUpRight className="w-5 h-5" /></>}
-              {status === "submitting" && "Sending..."}
-              {status === "success" && <>Message Sent! <CheckCircle2 className="w-5 h-5 text-emerald-600" /></>}
-              {status === "error" && "Error. Try again."}
+              {dict.submitBtn} <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </button>
-            
-            {status === "error" && (
-              <p className="text-red-400 text-sm text-center mt-2">Oops! Something went wrong. Please try again.</p>
-            )}
+
           </form>
         </div>
+
       </div>
     </section>
-  );
+  )
 }
