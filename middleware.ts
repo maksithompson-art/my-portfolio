@@ -43,7 +43,7 @@ function getLocaleFromRequest(request: NextRequest): Locale {
   return DEFAULT_LOCALE
 }
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Skip internal Next.js paths, API routes, static files, and Sanity studio
