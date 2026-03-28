@@ -34,7 +34,7 @@ export default function SelectedWork({
   const displayProjects = projects.slice(0, 4)
 
   return (
-    <section id="work" className="relative w-full bg-gradient-to-b from-[#0A0A0A] via-[#0A0D0B] to-[#0A110D] text-white py-32 px-8 md:px-12 lg:px-24">
+    <section id="work" className="relative w-full bg-gradient-to-b from-[#0A0A0A] via-[#0A0D0B] to-[#0A110D] text-white py-16 md:py-32 px-8 md:px-12 lg:px-24">
 
       {/* HEADER */}
       <div className="w-full max-w-7xl mx-auto mb-20 md:mb-32">

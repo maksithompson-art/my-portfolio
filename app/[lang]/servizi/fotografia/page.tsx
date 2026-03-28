@@ -164,10 +164,10 @@ export default async function VisualsLanding({ params }: { params: Promise<{ lan
       </section>
 
       {/* SERVICES */}
-      <section className="py-32 px-8 md:px-12 lg:px-24 border-t border-white/5">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
           {c.services.map((svc, i) => (
-            <div key={i} className="p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group flex flex-col min-h-[360px]">
+            <div key={i} className="p-6 md:p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group flex flex-col min-h-[360px]">
               <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:border-[#CCFF00]/30 transition-colors">
                 <svc.icon className="w-7 h-7 text-white group-hover:text-[#CCFF00] transition-colors" />
               </div>
@@ -179,15 +179,15 @@ export default async function VisualsLanding({ params }: { params: Promise<{ lan
       </section>
 
       {/* PROCESS */}
-      <section className="py-32 px-8 md:px-12 lg:px-24 border-y border-white/5">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24 border-y border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <div className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-4">{c.processLabel}</div>
             <h2 className="text-4xl md:text-5xl font-medium text-white">{c.processTitle}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {c.steps.map((step, i) => (
-              <div key={i} className="flex flex-col gap-6 p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors group">
+              <div key={i} className="flex flex-col gap-6 p-6 md:p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors group">
                 <div className="flex items-center justify-between">
                   <span className="text-5xl font-black text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:1px_#CCFF00] transition-all">{step.step}</span>
                   <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-[#CCFF00]/30 transition-colors">
@@ -203,9 +203,9 @@ export default async function VisualsLanding({ params }: { params: Promise<{ lan
       </section>
 
       {/* RECENT WORK */}
-      <section className="py-32 px-8 md:px-12 lg:px-24">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between md:items-end mb-16 gap-8 border-b border-white/10 pb-12">
+          <div className="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-16 gap-8 border-b border-white/10 pb-8 md:pb-12">
             <div>
               <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white">{c.recentLabel}</h2>
               <p className="text-gray-400 text-lg">{c.recentSub}</p>
@@ -240,15 +240,15 @@ export default async function VisualsLanding({ params }: { params: Promise<{ lan
       </section>
 
       {/* FAQ */}
-      <section className="py-32 px-8 md:px-12 lg:px-24 border-t border-white/5">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-20">
+          <div className="mb-12 md:mb-20">
             <div className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-6">{c.faqLabel}</div>
             <h2 className="text-4xl md:text-5xl font-medium text-white mb-6">{c.faqTitle}</h2>
           </div>
           <div className="space-y-4">
             {c.faqs.map((faq, i) => (
-              <div key={i} className="p-8 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-white/30 transition-colors">
+              <div key={i} className="p-6 md:p-8 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-white/30 transition-colors">
                 <h3 className="text-lg md:text-xl font-medium text-white mb-4 flex items-start gap-4">
                   <div className="mt-1 w-2 h-2 rounded-full bg-[#CCFF00] shrink-0" />
                   {faq.q}

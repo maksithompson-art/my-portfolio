@@ -43,16 +43,16 @@ export default async function PortfolioPage({ params }: { params: Promise<{ lang
   const projects = await client.fetch(query)
 
   return (
-    <main className="min-h-screen w-full bg-[#0A0A0A] text-white pt-40 md:pt-48 pb-24 selection:bg-[#CCFF00] selection:text-black font-sans">
+    <main className="min-h-screen w-full bg-[#0A0A0A] text-white pt-24 md:pt-48 pb-16 md:pb-24 selection:bg-[#CCFF00] selection:text-black font-sans">
 
       {/* CINEMATIC HEADER */}
-      <header className="px-8 md:px-12 lg:px-24 mb-16 md:mb-24 relative z-10">
+      <header className="px-8 md:px-12 lg:px-24 mb-12 md:mb-24 relative z-10">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
           <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">{p.indexLabel}</span>
         </div>
 
-        <h1 className="text-[5rem] md:text-[9rem] lg:text-[13rem] font-black uppercase tracking-tighter leading-[0.85] mb-12 flex flex-col cursor-default">
+        <h1 className="text-[2.5rem] md:text-[9rem] lg:text-[13rem] font-black uppercase tracking-tighter leading-[0.85] mb-8 md:mb-12 flex flex-col cursor-default">
           <span className="text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.4)] hover:text-white transition-colors duration-700">{p.title1}</span>
           <span className="text-white hover:text-[#CCFF00] transition-colors duration-700">{p.title2}</span>
         </h1>

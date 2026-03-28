@@ -34,7 +34,7 @@ export default function ProjectContent({
     <div className="w-full bg-[#0A0A0A] text-white selection:bg-[#CCFF00] selection:text-black">
 
       {/* HERO HEADER */}
-      <header className="px-8 md:px-12 lg:px-24 pt-40 pb-20 border-b border-white/10">
+      <header className="px-8 md:px-12 lg:px-24 pt-24 md:pt-40 pb-12 md:pb-20 border-b border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-4 mb-8">
             <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#CCFF00] bg-[#CCFF00]/10 px-4 py-2 rounded-full border border-[#CCFF00]/20">
@@ -70,11 +70,11 @@ export default function ProjectContent({
         </div>
       </header>
 
-      <main className="px-8 md:px-12 lg:px-24 py-24">
+      <main className="px-8 md:px-12 lg:px-24 py-12 md:py-24">
         <div className="max-w-7xl mx-auto">
 
           {/* CASE STUDY TEXT */}
-          <div className="max-w-4xl mb-32">
+          <div className="max-w-4xl mb-16 md:mb-32">
             <div className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-8">{labels.projectInfo}</div>
             {project.body ? (
               <PortableText value={project.body as Parameters<typeof PortableText>[0]['value']} components={portableTextComponents} />
@@ -94,7 +94,7 @@ export default function ProjectContent({
 
           {/* GALLERY */}
           {Array.isArray(project.gallery) && (project.gallery as string[]).length > 0 && (
-            <div className="mb-32">
+            <div className="mb-16 md:mb-32">
               <div className="columns-1 md:columns-2 gap-8 space-y-8">
                 {(project.gallery as string[]).map((imgUrl, index) => (
                   <div
@@ -116,7 +116,7 @@ export default function ProjectContent({
 
           {/* VIDEOS */}
           {Array.isArray(project.videoGallery) && (project.videoGallery as string[]).length > 0 && (
-            <div className="mb-32">
+            <div className="mb-16 md:mb-32">
               <h3 className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-12">Video & Motion</h3>
               <div className="grid grid-cols-1 gap-12">
                 {(project.videoGallery as string[]).map((vidUrl, index) => (

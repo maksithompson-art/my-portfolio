@@ -98,7 +98,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ lang
       </div>
 
       {/* BOTTOM NAV */}
-      <section className="mt-32 px-8 md:px-12 lg:px-24 border-t border-white/10 pt-24">
+      <section className="mt-16 md:mt-32 px-8 md:px-12 lg:px-24 border-t border-white/10 pt-12 md:pt-24">
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-500 mb-8">{labels.continueLabel}</p>
           <Link href={`/${lang}/portfolio`} className="group">

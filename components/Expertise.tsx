@@ -26,13 +26,13 @@ interface ExpertiseDict {
 
 export default function Expertise({ dict, lang }: { dict: ExpertiseDict; lang: string }) {
   return (
-    <section className="relative w-full bg-[#0A0A0A] text-white py-32 px-8 md:px-12 lg:px-24 flex flex-col items-center">
+    <section className="relative w-full bg-[#0A0A0A] text-white py-16 md:py-32 px-8 md:px-12 lg:px-24 flex flex-col items-center">
 
       {/* MASSIVE TYPOGRAPHY GRAPHIC */}
-      <div className="w-full flex items-center justify-center mb-24 cursor-default">
-        <h2 className="text-[4rem] md:text-[8rem] lg:text-[13rem] font-black tracking-tighter text-[#CCFF00] leading-none flex items-center">
+      <div className="w-full flex items-center justify-center mb-12 md:mb-24 cursor-default">
+        <h2 className="text-[2.25rem] md:text-[8rem] lg:text-[13rem] font-black tracking-tighter text-[#CCFF00] leading-none flex items-center">
           {dict.bigTitle1}
-          <div className="grid grid-cols-2 gap-2 mx-4 w-16 md:w-32 hover:scale-105 transition-transform duration-500">
+          <div className="grid grid-cols-2 gap-1 md:gap-2 mx-2 md:mx-4 w-6 md:w-32 hover:scale-105 transition-transform duration-500">
             <div className="w-full aspect-square bg-white" />
             <div className="w-full aspect-square bg-transparent" />
             <div className="w-full aspect-square bg-white" />
@@ -43,7 +43,7 @@ export default function Expertise({ dict, lang }: { dict: ExpertiseDict; lang: s
       </div>
 
       {/* SUB-HEADER */}
-      <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center mb-16 gap-4 md:gap-8 text-center">
+      <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center mb-10 md:mb-16 gap-4 md:gap-8 text-center">
         <h3 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight flex flex-col md:flex-row items-center gap-4 md:gap-6">
           {dict.subTitle1}
           <div className="bg-white text-black px-6 py-4 text-xs md:text-sm font-bold flex items-center gap-4 hover:bg-[#CCFF00] transition-colors cursor-default">

@@ -50,21 +50,21 @@ export default function PortfolioClient({
     <div className="w-full max-w-7xl mx-auto pb-24">
 
       {/* FILTER TABS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-10 md:mb-20">
         {CATEGORIES.map((cat) => {
           const isActive = activeTab === cat.id
           return (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`flex flex-col text-left p-6 md:p-8 rounded-[2rem] border transition-all duration-500 group ${
+              className={`flex flex-col text-left p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border transition-all duration-500 group ${
                 isActive
                   ? 'bg-[#111111] border-[#CCFF00] shadow-[0_0_30px_rgba(204,255,0,0.05)]'
                   : 'bg-[#0A0A0A] border-white/10 hover:border-white/30'
               }`}
             >
-              <cat.icon className={`w-8 h-8 mb-6 transition-colors duration-300 ${isActive ? 'text-[#CCFF00]' : 'text-gray-500 group-hover:text-white'}`} />
-              <h3 className={`text-xl font-medium mb-3 transition-colors ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
+              <cat.icon className={`w-6 h-6 md:w-8 md:h-8 mb-4 md:mb-6 transition-colors duration-300 ${isActive ? 'text-[#CCFF00]' : 'text-gray-500 group-hover:text-white'}`} />
+              <h3 className={`text-base md:text-xl font-medium mb-2 md:mb-3 transition-colors ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
                 {cat.title}
               </h3>
               <p className={`text-[10px] font-bold tracking-widest uppercase transition-colors ${isActive ? 'text-[#CCFF00]/80' : 'text-gray-600'}`}>

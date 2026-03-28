@@ -204,15 +204,15 @@ export default async function WebDevLanding({ params }: { params: Promise<{ lang
           </div>
         </div>
         <div className="relative z-10 flex flex-col lg:flex-row justify-between items-end w-full mt-20">
-          <div className="flex flex-col md:flex-row gap-4 w-full lg:w-auto">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 w-full md:w-56 flex flex-col justify-between h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
+          <div className="grid grid-cols-2 md:flex md:flex-row gap-4 w-full lg:w-auto">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-5 md:p-6 md:w-56 flex flex-col justify-between h-36 md:h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
               <p className="text-xs text-white font-medium leading-tight">{c.stat1a}<br /><span className="text-[#CCFF00]">{c.stat1b}</span></p>
               <div>
                 <p className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">{c.stat1c}</p>
                 <p className="text-[9px] uppercase tracking-wider text-gray-500">{c.stat1d}</p>
               </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 w-full md:w-56 flex flex-col justify-between h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-5 md:p-6 md:w-56 flex flex-col justify-between h-36 md:h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
               <h3 className="text-4xl font-light tracking-tighter text-white">99<span className="text-sm align-top ml-1 text-[#CCFF00]">/100</span></h3>
               <div>
                 <p className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">Google Lighthouse</p>
@@ -224,7 +224,7 @@ export default async function WebDevLanding({ params }: { params: Promise<{ lang
       </section>
 
       {/* TECH STACK */}
-      <section className="py-32 px-8 md:px-12 lg:px-24">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center bg-[#111111] border border-white/10 rounded-[3rem] p-8 md:p-16 hover:border-white/20 transition-colors duration-500">
             <div>
@@ -255,9 +255,9 @@ export default async function WebDevLanding({ params }: { params: Promise<{ lang
       </section>
 
       {/* FEATURES GRID */}
-      <section className="py-32 px-8 md:px-12 lg:px-24 border-y border-white/5">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24 border-y border-white/5">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-medium mb-16 text-white">{c.featTitle}</h2>
+          <h2 className="text-4xl md:text-5xl font-medium mb-10 md:mb-16 text-white">{c.featTitle}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {c.feats.map((feat, i) => (
               <div key={i} className="p-8 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group flex flex-col h-full min-h-[300px]">
@@ -271,9 +271,9 @@ export default async function WebDevLanding({ params }: { params: Promise<{ lang
       </section>
 
       {/* RECENT WORK */}
-      <section className="py-32 px-8 md:px-12 lg:px-24">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between md:items-end mb-16 gap-8 border-b border-white/10 pb-12">
+          <div className="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-16 gap-8 border-b border-white/10 pb-8 md:pb-12">
             <div>
               <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white">{c.recentLabel}</h2>
               <p className="text-gray-400 text-lg">{c.recentSub}</p>
@@ -308,16 +308,16 @@ export default async function WebDevLanding({ params }: { params: Promise<{ lang
       </section>
 
       {/* FAQ */}
-      <section className="py-32 px-8 md:px-12 lg:px-24 border-t border-white/5">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24 border-t border-white/5">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-20">
+          <div className="mb-12 md:mb-20">
             <div className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-6">{c.faqLabel}</div>
             <h2 className="text-4xl md:text-5xl font-medium text-white mb-6">{c.faqTitle}</h2>
             <p className="text-gray-400 text-lg">{c.faqSub}</p>
           </div>
           <div className="space-y-4">
             {c.faqs.map((faq, i) => (
-              <div key={i} className="p-8 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-white/30 transition-colors">
+              <div key={i} className="p-6 md:p-8 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-white/30 transition-colors">
                 <h3 className="text-lg md:text-xl font-medium text-white mb-4 flex items-start gap-4">
                   <div className="mt-1 w-2 h-2 rounded-full bg-[#CCFF00] shrink-0" />
                   {faq.q}

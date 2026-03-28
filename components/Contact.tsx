@@ -23,7 +23,7 @@ interface ContactDict {
 
 export default function Contact({ dict }: { dict: ContactDict }) {
   return (
-    <section id="contact" className="relative w-full bg-[#0A0A0A] text-white py-32 px-8 md:px-12 lg:px-24 rounded-t-[3rem] -mt-10 z-20">
+    <section id="contact" className="relative w-full bg-[#0A0A0A] text-white py-16 md:py-32 px-8 md:px-12 lg:px-24 rounded-t-[3rem] -mt-10 z-20">
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
         {/* LEFT: Typography & Info */}
