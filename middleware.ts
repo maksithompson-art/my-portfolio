@@ -1,6 +1,38 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+const SECURITY_HEADERS: [string, string][] = [
+  ['X-Content-Type-Options', 'nosniff'],
+  ['X-Frame-Options', 'DENY'],
+  ['X-XSS-Protection', '1; mode=block'],
+  ['Referrer-Policy', 'strict-origin-when-cross-origin'],
+  ['Permissions-Policy', 'camera=(), microphone=(), geolocation=(), interest-cohort=()'],
+  ['Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload'],
+  [
+    'Content-Security-Policy',
+    [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://cdn.sanity.io https://images.unsplash.com",
+      "font-src 'self' data:",
+      "connect-src 'self' https://formspree.io https://cdn.sanity.io https://api.sanity.io wss://cdn.sanity.io",
+      "media-src 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self' https://formspree.io",
+      "frame-ancestors 'none'",
+    ].join('; '),
+  ],
+]
+
+function withSecurityHeaders(response: NextResponse): NextResponse {
+  for (const [key, value] of SECURITY_HEADERS) {
+    response.headers.set(key, value)
+  }
+  return response
+}
+
 const LOCALES = ['it', 'en', 'fr'] as const
 type Locale = typeof LOCALES[number]
 const DEFAULT_LOCALE: Locale = 'it'
@@ -62,7 +94,7 @@ export function middleware(request: NextRequest) {
       pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
-  if (pathnameHasLocale) return NextResponse.next()
+  if (pathnameHasLocale) return withSecurityHeaders(NextResponse.next())
 
   // Detect the locale and redirect
   const locale = getLocaleFromRequest(request)

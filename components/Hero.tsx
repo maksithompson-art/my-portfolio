@@ -64,10 +64,10 @@ export default function Hero({ dict }: { dict: HeroDict }) {
 
       {/* BOTTOM BENTO STATS */}
       <div className="relative z-10 flex flex-col lg:flex-row justify-between items-end w-full mt-20">
-        <div className="flex flex-col md:flex-row gap-4 w-full lg:w-auto">
+        <div className="grid grid-cols-2 md:flex md:flex-row gap-4 w-full lg:w-auto">
 
           {/* Box 1: Brand Authority */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 w-full md:w-56 flex flex-col justify-between h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-5 md:p-6 md:w-56 flex flex-col justify-between h-36 md:h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
             <div className="flex justify-between items-start">
               <p className="text-xs text-white font-medium leading-tight">
                 {dict.stat1Label}
@@ -87,7 +87,7 @@ export default function Hero({ dict }: { dict: HeroDict }) {
           </div>
 
           {/* Box 2: Performance */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 w-full md:w-56 flex flex-col justify-between h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-5 md:p-6 md:w-56 flex flex-col justify-between h-36 md:h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
             <div className="flex justify-between items-start">
               <h3 className="text-4xl font-light tracking-tighter text-white">
                 95%<span className="text-sm align-top ml-1 text-[#CCFF00]">/</span>

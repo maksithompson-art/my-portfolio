@@ -38,9 +38,9 @@ export default function Contact({ dict }: { dict: ContactDict }) {
             </h2>
             <p className="text-gray-400 text-lg max-w-md leading-relaxed">{dict.description}</p>
           </div>
-          <div className="mt-16 lg:mt-0 hidden lg:block">
+          <div className="mt-8 lg:mt-0">
             <p className="text-xs font-bold tracking-widest uppercase text-gray-500 mb-2">{dict.directContactLabel}</p>
-            <a href="mailto:hello@maksithompson.com" className="text-2xl font-medium hover:text-[#CCFF00] transition-colors">
+            <a href="mailto:hello@maksithompson.com" className="text-lg md:text-2xl font-medium hover:text-[#CCFF00] transition-colors break-all">
               maksithompson50@gmail.com
             </a>
           </div>
@@ -48,7 +48,7 @@ export default function Contact({ dict }: { dict: ContactDict }) {
 
         {/* RIGHT: Contact Form */}
         <div className="w-full bg-[#111111] p-8 md:p-12 rounded-[2rem] border border-white/5">
-          <form action="https://formspree.io/f/xkgbpjpl" method="POST" className="flex flex-col gap-8">
+          <form action="https://formspree.io/f/xdapneqv" method="POST" className="flex flex-col gap-8">
 
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-[10px] font-bold tracking-widest uppercase text-gray-400">{dict.labelName}</label>

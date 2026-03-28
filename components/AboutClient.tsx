@@ -5,6 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Camera, MapPin, Award, Code2, MonitorPlay, Zap, ArrowUpRight, ChevronDown } from 'lucide-react'
 
+function renderBioText(text: string) {
+  return text.split(/(<strong>.*?<\/strong>)/g).map((part, i) => {
+    const match = part.match(/^<strong>(.*?)<\/strong>$/)
+    return match ? <strong key={i} className="text-white">{match[1]}</strong> : part
+  })
+}
+
 interface TimelineItem {
   year: string
   role: string
@@ -47,7 +54,7 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
       <div className="absolute top-0 inset-x-0 h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/[0.03] via-[#0A0A0A]/0 to-transparent pointer-events-none transform-gpu" aria-hidden="true" />
 
       {/* 1. EDITORIAL HERO */}
-      <header className="px-8 md:px-12 lg:px-24 pt-40 pb-24 relative z-10 border-b border-white/5">
+      <header className="px-8 md:px-12 lg:px-24 pt-28 pb-16 md:pt-40 md:pb-24 relative z-10 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
 
           <div className="mb-8 inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-[#CCFF00] text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
@@ -60,7 +67,7 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
             <span className="text-transparent [-webkit-text-stroke:2px_#CCFF00]">{dict.title2}</span>
           </h1>
 
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-24 items-start">
             {/* Portrait */}
             <div className="w-full lg:w-5/12 relative group">
               <div className="aspect-[4/5] rounded-[2rem] overflow-hidden relative z-10 border border-white/10 bg-[#111111] shadow-2xl">
@@ -79,8 +86,8 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
             {/* Narrative */}
             <div className="w-full lg:w-7/12 pt-8">
               <div className="space-y-8 text-xl md:text-2xl text-gray-400 leading-relaxed font-medium">
-                <p dangerouslySetInnerHTML={{ __html: dict.bio1 }} />
-                <p dangerouslySetInnerHTML={{ __html: dict.bio2 }} />
+                <p>{renderBioText(dict.bio1)}</p>
+                <p>{renderBioText(dict.bio2)}</p>
                 <p className="pl-6 border-l-2 border-[#CCFF00] text-white italic">{dict.bio3}</p>
               </div>
             </div>
@@ -90,16 +97,16 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
       </header>
 
       {/* 2. BENTO — SKILLS */}
-      <section className="py-32 px-8 md:px-12 lg:px-24 border-b border-white/5 bg-[#0A0A0A]">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24 border-b border-white/5 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <div className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-4">{dict.skillsLabel}</div>
             <h2 className="text-4xl md:text-5xl font-medium text-white">{dict.skillsTitle}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
 
             {/* Frontend */}
-            <div className="col-span-1 md:col-span-2 p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group">
+            <div className="col-span-1 md:col-span-2 p-6 md:p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group">
               <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:border-[#CCFF00]/30 transition-colors">
                 <MonitorPlay className="w-6 h-6 text-white group-hover:text-[#CCFF00] transition-colors" />
               </div>
@@ -113,7 +120,7 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
             </div>
 
             {/* Camera Gear */}
-            <div className="col-span-1 p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group">
+            <div className="col-span-1 p-6 md:p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group">
               <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:border-[#CCFF00]/30 transition-colors">
                 <Camera className="w-6 h-6 text-white group-hover:text-[#CCFF00] transition-colors" />
               </div>
@@ -127,7 +134,7 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
             </div>
 
             {/* Backend */}
-            <div className="col-span-1 p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group">
+            <div className="col-span-1 p-6 md:p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 group">
               <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:border-[#CCFF00]/30 transition-colors">
                 <Code2 className="w-6 h-6 text-white group-hover:text-[#CCFF00] transition-colors" />
               </div>
@@ -140,7 +147,7 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
             </div>
 
             {/* SEO */}
-            <div className="col-span-1 md:col-span-2 p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 relative overflow-hidden group">
+            <div className="col-span-1 md:col-span-2 p-6 md:p-10 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-[#CCFF00]/50 transition-colors duration-500 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Zap className="w-40 h-40 text-white" />
               </div>
@@ -156,10 +163,10 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
       </section>
 
       {/* 3. TIMELINE */}
-      <section className="py-32 px-8 md:px-12 lg:px-24">
+      <section className="py-16 md:py-32 px-8 md:px-12 lg:px-24">
         <div className="max-w-4xl mx-auto">
 
-          <div className="text-center mb-24">
+          <div className="text-center mb-12 md:mb-24">
             <div className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-4">{dict.timelineLabel}</div>
             <h2 className="text-4xl md:text-5xl font-medium text-white mb-6">{dict.timelineTitle}</h2>
             <p className="text-gray-400 text-lg">{dict.timelineSub}</p>
@@ -200,7 +207,7 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
           )}
 
           {/* Final CTA */}
-          <div className="mt-32 bg-[#111111] border border-white/10 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden group hover:border-[#CCFF00]/30 transition-colors duration-700">
+          <div className="mt-16 md:mt-32 bg-[#111111] border border-white/10 rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden group hover:border-[#CCFF00]/30 transition-colors duration-700">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#CCFF00]/5 rounded-full blur-[100px] pointer-events-none" aria-hidden="true" />
             <div className="relative z-10">
               <h3 className="text-3xl md:text-5xl font-medium mb-8 text-white tracking-tight">{dict.ctaTitle}</h3>
