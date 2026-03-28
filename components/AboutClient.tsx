@@ -65,7 +65,7 @@ export default function AboutClient({ dict, lang }: { dict: AboutDict; lang: str
             <div className="w-full lg:w-5/12 relative group">
               <div className="aspect-[4/5] rounded-[2rem] overflow-hidden relative z-10 border border-white/10 bg-[#111111] shadow-2xl">
                 <Image
-                  src="/michael.webp"
+                  src="/IMG_2039.jpg"
                   alt="Maksi Thompson — Professional Profile"
                   fill
                   priority

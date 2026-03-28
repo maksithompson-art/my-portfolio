@@ -89,7 +89,7 @@ export default function AboutPage() {
             <div className="w-full lg:w-5/12 relative group">
               <div className="aspect-[4/5] rounded-[2rem] overflow-hidden relative z-10 border border-white/10 bg-[#111111] shadow-2xl">
                 <Image 
-                  src="/IMG_4105.webp" 
+                  src="/IMG_2039.jpg" 
                   alt="Maksi Thompson - Profilo Professionale" 
                   fill
                   priority
