@@ -3,6 +3,7 @@ export const runtime = 'edge'
 import type { Metadata } from 'next'
 import { ArrowUpRight, CheckCircle2, Camera, Users, Briefcase, Building2, Award, Globe } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getDictionary, hasLocale, type Locale } from '../../../dictionaries'
 import Contact from '@/components/Contact'
@@ -36,9 +37,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 const CONTENT = {
   it: {
     eyebrow: 'FOTOGRAFIA CORPORATE — TORINO',
-    h1: 'FOTOGRAFO CORPORATE E AZIENDALE A TORINO.',
-    desc: 'Ritratti professionali, eventi aziendali, conferenze e brand identity per aziende e professionisti a Torino e in Piemonte. Un portfolio che include il Festival di Cannes, il Gran Premio di Monaco e produzioni cinematografiche internazionali.',
+    h1a: 'FOTOGRAFO',
+    h1b: 'CORPORATE',
+    h1c: 'A TORINO.',
+    tagline1: 'RITRATTI & TEAM',
+    tagline2: 'EVENTI AZIENDALI',
+    tagline3: 'BRAND IDENTITY',
+    desc: 'Ritratti professionali, eventi aziendali, conferenze e brand identity per aziende e professionisti a Torino e in Piemonte. Portfolio internazionale: Festival di Cannes, Gran Premio di Monaco, produzioni cinematografiche UK.',
     breadcrumb: 'Fotografia',
+    breadcrumbLabel: 'Fotografo Corporate Torino',
     credentialsBadge: 'Festival de Cannes · Monaco Grand Prix · Goldfinch UK',
     services: [
       { icon: Users, title: 'Ritratti Professionali & Team', desc: 'Headshot professionali per LinkedIn, sito aziendale e materiali di comunicazione. Ritratti individuali e foto di gruppo per team aziendali. Sessioni in studio o in location.' },
@@ -58,10 +65,11 @@ const CONTENT = {
     ],
     packagesTitle: 'Pacchetti corporate',
     packages: [
-      { name: 'Headshot Session', desc: 'Sessione ritratti individuali o piccolo team (fino a 5 persone). 2-3 ore in studio o in location a Torino. 15 foto ritoccate per persona.', price: 'Da €300' },
-      { name: 'Evento Aziendale', desc: 'Copertura evento mezza o giornata intera. Editing in 48 ore. Galleria privata con 100-300 foto. Adatto per conferenze, lanci, fiere.', price: 'Da €600' },
-      { name: 'Brand Identity Campaign', desc: 'Campagna fotografica completa: pre-produzione, shooting 1-2 giorni, post-produzione con art direction. Asset per tutti i canali.', price: 'Preventivo su misura' },
+      { name: 'Headshot Session', desc: 'Sessione ritratti individuali o piccolo team (fino a 5 persone). 2-3 ore in studio o in location a Torino. 15 foto ritoccate per persona.', price: 'Da €300', popular: false },
+      { name: 'Evento Aziendale', desc: 'Copertura evento mezza o giornata intera. Editing in 48 ore. Galleria privata con 100-300 foto. Adatto per conferenze, lanci, fiere.', price: 'Da €600', popular: true },
+      { name: 'Brand Identity Campaign', desc: 'Campagna fotografica completa: pre-produzione, shooting 1-2 giorni, post-produzione con art direction. Asset per tutti i canali.', price: 'Preventivo su misura', popular: false },
     ],
+    popularLabel: '★ Più Richiesto',
     deliverables: [
       'Galleria privata online per download',
       'Licenza commerciale illimitata',
@@ -70,6 +78,7 @@ const CONTENT = {
       'Metadati IPTC per uffici stampa',
       'Art direction inclusa',
     ],
+    deliverablesTitle: 'Incluso in ogni pacchetto:',
     faqLabel: 'FAQ',
     faqTitle: 'Domande sulla fotografia corporate a Torino.',
     faqs: [
@@ -79,14 +88,20 @@ const CONTENT = {
       { q: 'Posso richiedere una consegna urgente delle foto?', a: 'Sì. Per eventi con esigenze di comunicazione immediata (comunicati stampa, post-evento), offriamo consegna prioritaria di una selezione di foto editorate entro 24-48 ore dallo shooting.' },
       { q: 'Offrite anche servizi video aziendali?', a: 'Sì. Oltre alla fotografia corporate, produciamo video aziendali, interviste e contenuti per social media. Un unico studio per fotografia, video e sviluppo sito web.' },
     ],
-    ctaTitle: 'Richiedi un preventivo per il tuo progetto corporate.',
     backLink: '← Torna a Fotografia',
+    quoteBtn: 'Richiedi Preventivo',
   },
   en: {
     eyebrow: 'CORPORATE PHOTOGRAPHY — TURIN',
-    h1: 'CORPORATE AND BUSINESS PHOTOGRAPHER IN TURIN.',
-    desc: 'Professional portraits, corporate events, conferences and brand identity for companies and professionals in Turin and Piedmont. A portfolio including the Cannes Film Festival, Monaco Grand Prix and international film productions.',
+    h1a: 'CORPORATE',
+    h1b: 'PHOTOGRAPHER',
+    h1c: 'IN TURIN.',
+    tagline1: 'PORTRAITS & TEAM',
+    tagline2: 'CORPORATE EVENTS',
+    tagline3: 'BRAND IDENTITY',
+    desc: 'Professional portraits, corporate events, conferences and brand identity for companies and professionals in Turin and Piedmont. International portfolio: Cannes Film Festival, Monaco Grand Prix, UK film productions.',
     breadcrumb: 'Photography',
+    breadcrumbLabel: 'Corporate Photographer Turin',
     credentialsBadge: 'Festival de Cannes · Monaco Grand Prix · Goldfinch UK',
     services: [
       { icon: Users, title: 'Professional Portraits & Team', desc: 'Professional headshots for LinkedIn, company website and communications. Individual portraits and group photos for corporate teams. Studio or location sessions.' },
@@ -106,10 +121,11 @@ const CONTENT = {
     ],
     packagesTitle: 'Corporate packages',
     packages: [
-      { name: 'Headshot Session', desc: 'Individual or small team portrait session (up to 5 people). 2-3 hours in studio or on location in Turin. 15 retouched photos per person.', price: 'From €300' },
-      { name: 'Corporate Event', desc: 'Half or full-day event coverage. Editing in 48 hours. Private gallery with 100-300 photos. Suitable for conferences, launches, trade shows.', price: 'From €600' },
-      { name: 'Brand Identity Campaign', desc: 'Complete photography campaign: pre-production, 1-2 day shoot, post-production with art direction. Assets for all channels.', price: 'Custom quote' },
+      { name: 'Headshot Session', desc: 'Individual or small team portrait session (up to 5 people). 2-3 hours in studio or on location in Turin. 15 retouched photos per person.', price: 'From €300', popular: false },
+      { name: 'Corporate Event', desc: 'Half or full-day event coverage. Editing in 48 hours. Private gallery with 100-300 photos. Suitable for conferences, launches, trade shows.', price: 'From €600', popular: true },
+      { name: 'Brand Identity Campaign', desc: 'Complete photography campaign: pre-production, 1-2 day shoot, post-production with art direction. Assets for all channels.', price: 'Custom quote', popular: false },
     ],
+    popularLabel: '★ Most Popular',
     deliverables: [
       'Private online gallery for download',
       'Unlimited commercial licence',
@@ -118,6 +134,7 @@ const CONTENT = {
       'IPTC metadata for press offices',
       'Art direction included',
     ],
+    deliverablesTitle: 'Included in every package:',
     faqLabel: 'FAQ',
     faqTitle: 'Questions about corporate photography in Turin.',
     faqs: [
@@ -126,14 +143,20 @@ const CONTENT = {
       { q: 'Do you work outside Turin?', a: 'Yes. We are available for projects across Piedmont, Italy and internationally. International photo coverage is part of our professional background.' },
       { q: 'Can I request urgent photo delivery?', a: 'Yes. For events with immediate communication needs (press releases, post-event), we offer priority delivery of a selection of edited photos within 24-48 hours of the shoot.' },
     ],
-    ctaTitle: 'Request a quote for your corporate project.',
     backLink: '← Back to Photography',
+    quoteBtn: 'Get a Quote',
   },
   fr: {
     eyebrow: 'PHOTOGRAPHIE CORPORATE — TURIN',
-    h1: 'PHOTOGRAPHE CORPORATE ET D\'ENTREPRISE À TURIN.',
-    desc: 'Portraits professionnels, événements d\'entreprise, conférences et identité de marque pour les entreprises et professionnels à Turin et en Piémont. Un portfolio incluant le Festival de Cannes, le Grand Prix de Monaco et des productions cinématographiques internationales.',
+    h1a: 'PHOTOGRAPHE',
+    h1b: 'CORPORATE',
+    h1c: 'À TURIN.',
+    tagline1: 'PORTRAITS & ÉQUIPE',
+    tagline2: 'ÉVÉNEMENTS CORPORATE',
+    tagline3: 'IDENTITÉ DE MARQUE',
+    desc: 'Portraits professionnels, événements d\'entreprise, conférences et identité de marque pour les entreprises et professionnels à Turin et en Piémont. Portfolio international : Festival de Cannes, Grand Prix de Monaco, productions cinématographiques UK.',
     breadcrumb: 'Photographie',
+    breadcrumbLabel: 'Photographe Corporate Turin',
     credentialsBadge: 'Festival de Cannes · Grand Prix de Monaco · Goldfinch UK',
     services: [
       { icon: Users, title: 'Portraits Professionnels & Équipe', desc: 'Headshots professionnels pour LinkedIn, site web d\'entreprise et communications. Portraits individuels et photos de groupe pour les équipes. Sessions en studio ou sur site.' },
@@ -153,10 +176,11 @@ const CONTENT = {
     ],
     packagesTitle: 'Forfaits corporate',
     packages: [
-      { name: 'Headshot Session', desc: 'Session portraits individuels ou petite équipe (jusqu\'à 5 personnes). 2-3h en studio ou sur site à Turin. 15 photos retouchées par personne.', price: 'À partir de €300' },
-      { name: 'Événement Corporate', desc: 'Couverture demi-journée ou journée entière. Montage en 48h. Galerie privée avec 100-300 photos. Idéal pour conférences, lancements, salons.', price: 'À partir de €600' },
-      { name: 'Campagne Brand Identity', desc: 'Campagne photographique complète : pré-production, shooting 1-2 jours, post-production avec direction artistique. Assets pour tous les canaux.', price: 'Devis personnalisé' },
+      { name: 'Headshot Session', desc: 'Session portraits individuels ou petite équipe (jusqu\'à 5 personnes). 2-3h en studio ou sur site à Turin. 15 photos retouchées par personne.', price: 'À partir de €300', popular: false },
+      { name: 'Événement Corporate', desc: 'Couverture demi-journée ou journée entière. Montage en 48h. Galerie privée avec 100-300 photos. Idéal pour conférences, lancements, salons.', price: 'À partir de €600', popular: true },
+      { name: 'Campagne Brand Identity', desc: 'Campagne photographique complète : pré-production, shooting 1-2 jours, post-production avec direction artistique. Assets pour tous les canaux.', price: 'Devis personnalisé', popular: false },
     ],
+    popularLabel: '★ Plus Demandé',
     deliverables: [
       'Galerie privée en ligne pour téléchargement',
       'Licence commerciale illimitée',
@@ -165,6 +189,7 @@ const CONTENT = {
       'Métadonnées IPTC pour services de presse',
       'Direction artistique incluse',
     ],
+    deliverablesTitle: 'Inclus dans chaque forfait :',
     faqLabel: 'FAQ',
     faqTitle: 'Questions sur la photographie corporate à Turin.',
     faqs: [
@@ -173,8 +198,8 @@ const CONTENT = {
       { q: 'Travaillez-vous en dehors de Turin ?', a: 'Oui. Nous sommes disponibles pour des projets dans tout le Piémont, en Italie et à l\'international. La couverture photo internationale fait partie de notre background professionnel.' },
       { q: 'Puis-je demander une livraison urgente des photos ?', a: 'Oui. Pour les événements avec des besoins de communication immédiats, nous proposons une livraison prioritaire d\'une sélection de photos dans les 24-48h suivant le shooting.' },
     ],
-    ctaTitle: 'Demandez un devis pour votre projet corporate.',
     backLink: '← Retour à Photographie',
+    quoteBtn: 'Demander un Devis',
   },
 }
 
@@ -212,29 +237,38 @@ export default async function FotografoCorporateTorinoPage({ params }: { params:
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* HERO */}
-      <section className="pt-32 pb-20 px-8 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto">
-          <nav className="flex items-center gap-2 text-xs text-gray-500 mb-10 font-mono">
-            <Link href={`/${lang}`} className="hover:text-[#CCFF00] transition-colors">Home</Link>
-            <span>/</span>
-            <Link href={`/${lang}/servizi/fotografia`} className="hover:text-[#CCFF00] transition-colors">{c.breadcrumb}</Link>
-            <span>/</span>
-            <span className="text-gray-300">{lang === 'it' ? 'Fotografo Corporate Torino' : lang === 'fr' ? 'Photographe Corporate Turin' : 'Corporate Photographer Turin'}</span>
-          </nav>
-          <p className="text-xs font-bold tracking-widest uppercase text-[#CCFF00] mb-6">| {c.eyebrow}</p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tight max-w-5xl mb-6">{c.h1}</h1>
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-xs text-gray-300 mb-8">
-            <Award className="w-3 h-3 text-[#CCFF00]" />
-            {c.credentialsBadge}
+      <section className="relative min-h-screen w-full bg-[#0A0A0A] text-white overflow-hidden flex flex-col justify-between p-8 md:p-12 lg:p-16">
+        <div className="absolute inset-0 z-0">
+          <Image src="/audi.webp" alt={c.h1a} fill priority className="object-cover object-top opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/20 to-[#0A0A0A]" />
+        </div>
+        <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-12 w-full mt-24">
+          <div className="max-w-3xl">
+            <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6 font-mono">
+              <Link href={`/${lang}`} className="hover:text-[#CCFF00] transition-colors">Home</Link>
+              <span>/</span>
+              <Link href={`/${lang}/servizi/fotografia`} className="hover:text-[#CCFF00] transition-colors">{c.breadcrumb}</Link>
+              <span>/</span>
+              <span className="text-gray-300">{c.breadcrumbLabel}</span>
+            </nav>
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-xs text-gray-300 mb-6">
+              <Award className="w-3 h-3 text-[#CCFF00]" />
+              {c.credentialsBadge}
+            </div>
+            <p className="text-xs font-semibold tracking-widest uppercase mb-6 text-gray-300">| {c.eyebrow}</p>
+            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-medium leading-[1.05] tracking-tight">
+              {c.h1a} <br />
+              <span className="text-transparent [-webkit-text-stroke:2px_#CCFF00]">{c.h1b}</span> <br />
+              {c.h1c}{' '}
+              <ArrowUpRight className="inline-block w-12 h-12 ml-4 p-3 border border-white/30 rounded-full text-gray-300" />
+            </h1>
           </div>
-          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed mb-12">{c.desc}</p>
-          <Link
-            href={`/${lang}/#contact`}
-            className="inline-flex items-center gap-3 bg-[#CCFF00] text-black text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-full hover:bg-white transition-colors"
-          >
-            {lang === 'it' ? 'Richiedi Preventivo' : lang === 'fr' ? 'Demander un Devis' : 'Get a Quote'}
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          <div className="lg:text-right flex flex-col lg:items-end mt-8 lg:mt-0">
+            <h2 className="text-lg md:text-xl font-medium leading-loose tracking-wider">
+              {c.tagline1}<br />{c.tagline2}<br />{c.tagline3}
+            </h2>
+            <p className="text-sm text-gray-400 max-w-xs mt-6 leading-relaxed">{c.desc}</p>
+          </div>
         </div>
       </section>
 
@@ -282,9 +316,10 @@ export default async function FotografoCorporateTorinoPage({ params }: { params:
           <h2 className="text-3xl md:text-4xl font-medium text-white mb-10">{c.packagesTitle}</h2>
           <div className="space-y-4 mb-8">
             {c.packages.map((p, i) => (
-              <div key={i} className={`p-8 rounded-[2rem] border transition-colors ${i === 1 ? 'bg-[#CCFF00]/5 border-[#CCFF00]/30' : 'bg-[#111111] border-white/10'}`}>
+              <div key={i} className={`p-8 rounded-[2rem] border transition-colors ${p.popular ? 'bg-[#CCFF00]/5 border-[#CCFF00]/30' : 'bg-[#111111] border-white/10'}`}>
                 <div className="flex justify-between items-start">
                   <div>
+                    {p.popular && <span className="text-[10px] font-bold tracking-widest uppercase text-[#CCFF00] mb-2 block">{c.popularLabel}</span>}
                     <h3 className="text-xl font-medium text-white mb-3">{p.name}</h3>
                     <p className="text-gray-400 text-sm leading-relaxed max-w-md">{p.desc}</p>
                   </div>
@@ -294,7 +329,7 @@ export default async function FotografoCorporateTorinoPage({ params }: { params:
             ))}
           </div>
           <div className="p-6 rounded-[2rem] bg-[#111111] border border-white/10">
-            <h3 className="text-white font-medium mb-4 text-sm uppercase tracking-widest">{lang === 'it' ? 'Incluso in ogni pacchetto:' : lang === 'fr' ? 'Inclus dans chaque forfait :' : 'Included in every package:'}</h3>
+            <h3 className="text-white font-medium mb-4 text-sm uppercase tracking-widest">{c.deliverablesTitle}</h3>
             <ul className="grid md:grid-cols-2 gap-2">
               {c.deliverables.map((d, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
@@ -324,7 +359,6 @@ export default async function FotografoCorporateTorinoPage({ params }: { params:
         </div>
       </section>
 
-      {/* BACK LINK */}
       <div className="px-8 md:px-12 lg:px-24 pb-4">
         <div className="max-w-7xl mx-auto">
           <Link href={`/${lang}/servizi/fotografia`} className="text-xs font-bold tracking-widest uppercase text-gray-500 hover:text-[#CCFF00] transition-colors">

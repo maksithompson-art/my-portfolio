@@ -3,6 +3,7 @@ export const runtime = 'edge'
 import type { Metadata } from 'next'
 import { ArrowUpRight, CheckCircle2, Clock, Code2, Globe, Layers, Search, Zap } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getDictionary, hasLocale, type Locale } from '../../../dictionaries'
 import Contact from '@/components/Contact'
@@ -36,39 +37,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 const CONTENT = {
   it: {
     eyebrow: 'DIGITAL STUDIO — TORINO',
-    h1: 'REALIZZAZIONE SITI WEB PROFESSIONALI A TORINO.',
+    h1a: 'REALIZZAZIONE',
+    h1b: 'SITI WEB',
+    h1c: 'A TORINO.',
+    tagline1: 'NEXT.JS & REACT',
+    tagline2: 'SEO ENGINEERING',
+    tagline3: 'TORINO & ITALIA',
     desc: 'Sviluppiamo siti web su misura per aziende, ristoranti, studi professionali e brand a Torino e in tutto il Piemonte. Architetture in Next.js, zero template, performance 99/100.',
+    stat1a: 'Caricamenti in', stat1b: 'Millisecondi.', stat1c: 'Server-Side', stat1d: 'Architetture Edge ultra veloci',
     breadcrumb: 'Sviluppo Siti Web',
-    breadcrumbParent: 'Servizi',
-    stat1: '99/100', stat1Label: 'Google Lighthouse',
-    stat2: '<1s', stat2Label: 'Tempo di caricamento',
-    stat3: '100%', stat3Label: 'Codice Nativo',
+    breadcrumbSlug: 'sito-web-torino',
+    breadcrumbLabel: 'Sito Web Torino',
     offeringsTitle: 'Che tipo di sito web realizziamo a Torino',
     offerings: [
-      {
-        icon: Globe,
-        title: 'Sito Vetrina',
-        desc: 'Presentazione professionale della tua attività. Design sartoriale, testi ottimizzati SEO e struttura pensata per convertire i visitatori in clienti. Ideale per studi professionali, artigiani e piccole imprese torinesi.',
-        price: 'Da €2.500',
-      },
-      {
-        icon: Zap,
-        title: 'Landing Page ad Alta Conversione',
-        desc: 'Una pagina unica e focalizzata per campagne Google Ads, social o lancio prodotto. Strutturata attorno a un unico obiettivo: la conversione. A/B test inclusi su richiesta.',
-        price: 'Da €1.200',
-      },
-      {
-        icon: Layers,
-        title: 'Web App & Portale Aziendale',
-        desc: 'Piattaforme digitali complesse: gestionale interno, prenotazioni online, portale clienti, CRM custom. Architetture React + Next.js scalabili e sicure.',
-        price: 'Da €5.000',
-      },
-      {
-        icon: Code2,
-        title: 'Restyling Sito Esistente',
-        desc: 'Il tuo sito attuale è lento, non converte o non si posiziona su Google? Analizziamo i problemi e ricostruiamo su basi solide — senza perdere la tua storia digitale.',
-        price: 'Preventivo su misura',
-      },
+      { icon: Globe, title: 'Sito Vetrina', desc: 'Presentazione professionale della tua attività. Design sartoriale, testi ottimizzati SEO e struttura pensata per convertire i visitatori in clienti. Ideale per studi professionali, artigiani e piccole imprese torinesi.', price: 'Da €2.500' },
+      { icon: Zap, title: 'Landing Page ad Alta Conversione', desc: 'Una pagina unica e focalizzata per campagne Google Ads, social o lancio prodotto. Strutturata attorno a un unico obiettivo: la conversione. A/B test inclusi su richiesta.', price: 'Da €1.200' },
+      { icon: Layers, title: 'Web App & Portale Aziendale', desc: 'Piattaforme digitali complesse: gestionale interno, prenotazioni online, portale clienti, CRM custom. Architetture React + Next.js scalabili e sicure.', price: 'Da €5.000' },
+      { icon: Code2, title: 'Restyling Sito Esistente', desc: 'Il tuo sito attuale è lento, non converte o non si posiziona su Google? Analizziamo i problemi e ricostruiamo su basi solide — senza perdere la tua storia digitale.', price: 'Preventivo su misura' },
     ],
     whyTitle: 'Perché scegliere uno sviluppatore web a Torino',
     whyDesc: 'Lavorare con uno studio locale non è solo comodità. È valore concreto: conosciamo il mercato piemontese, possiamo incontrarci di persona e offriamo un rapporto diretto senza intermediari.',
@@ -96,47 +81,32 @@ const CONTENT = {
       { type: 'Web App / Portale', price: '€8.000+', time: 'Su progetto' },
       { type: 'Manutenzione Mensile', price: 'Da €150/mese', time: 'Continuativo' },
     ],
+    pricingColType: 'Tipologia', pricingColPrice: 'Investimento', pricingColTime: 'Tempi',
     faqLabel: 'FAQ',
     faqTitle: 'Domande sulla realizzazione di siti web a Torino.',
     faqs: [
-      {
-        q: 'Quanto tempo ci vuole per fare un sito web a Torino?',
-        a: 'Un sito vetrina standard richiede 3-4 settimane dalla firma del contratto. Una landing page 1-2 settimane. Progetti più complessi (e-commerce, web app) richiedono 6-12 settimane. La timeline esatta viene definita nel preventivo.',
-      },
-      {
-        q: 'Perché non usare WordPress o Wix per il mio sito?',
-        a: 'WordPress e Wix usano architetture del 2005 con decine di plugin che rallentano il sito. Google penalizza i siti lenti. Usiamo Next.js — lo stesso framework di Netflix, TikTok e OpenAI — per garantire caricamenti in millisecondi e sicurezza nativa.',
-      },
-      {
-        q: 'Offrite la manutenzione del sito dopo la consegna?',
-        a: 'Sì. I nostri pacchetti di manutenzione mensile (da €150/mese) includono aggiornamenti, backup, monitoraggio uptime e modifiche minori. Il tuo sito rimane sempre sicuro, veloce e aggiornato.',
-      },
-      {
-        q: 'Il sito sarà visibile su Google dopo la consegna?',
-        a: 'Ogni sito viene consegnato con sitemap XML, meta tag ottimizzati, dati strutturati JSON-LD e configurazione Google Search Console. L\'indicizzazione avviene tipicamente entro 2-4 settimane dal lancio. La posizione dipende poi dal contenuto e dai backlink.',
-      },
-      {
-        q: 'Realizzate siti web per ristoranti a Torino?',
-        a: 'Sì, è uno dei nostri settori di punta. Realizziamo siti per ristoranti con menu digitale, galleria fotografica, sistema di prenotazione e integrazione Google Maps. Offriamo anche il servizio fotografico food in abbinamento.',
-      },
-      {
-        q: 'Posso gestire i contenuti del sito in autonomia?',
-        a: 'Assolutamente. Integriamo Sanity CMS — un pannello di controllo intuitivo da cui puoi modificare testi, foto e pagine senza toccare una riga di codice. Incluso nel prezzo.',
-      },
+      { q: 'Quanto tempo ci vuole per fare un sito web a Torino?', a: 'Un sito vetrina standard richiede 3-4 settimane dalla firma del contratto. Una landing page 1-2 settimane. Progetti più complessi (e-commerce, web app) richiedono 6-12 settimane. La timeline esatta viene definita nel preventivo.' },
+      { q: 'Perché non usare WordPress o Wix per il mio sito?', a: 'WordPress e Wix usano architetture del 2005 con decine di plugin che rallentano il sito. Google penalizza i siti lenti. Usiamo Next.js — lo stesso framework di Netflix, TikTok e OpenAI — per garantire caricamenti in millisecondi e sicurezza nativa.' },
+      { q: 'Offrite la manutenzione del sito dopo la consegna?', a: 'Sì. I nostri pacchetti di manutenzione mensile (da €150/mese) includono aggiornamenti, backup, monitoraggio uptime e modifiche minori. Il tuo sito rimane sempre sicuro, veloce e aggiornato.' },
+      { q: 'Il sito sarà visibile su Google dopo la consegna?', a: 'Ogni sito viene consegnato con sitemap XML, meta tag ottimizzati, dati strutturati JSON-LD e configurazione Google Search Console. L\'indicizzazione avviene tipicamente entro 2-4 settimane dal lancio.' },
+      { q: 'Realizzate siti web per ristoranti a Torino?', a: 'Sì, è uno dei nostri settori di punta. Realizziamo siti per ristoranti con menu digitale, galleria fotografica, sistema di prenotazione e integrazione Google Maps. Offriamo anche il servizio fotografico food in abbinamento.' },
+      { q: 'Posso gestire i contenuti del sito in autonomia?', a: 'Assolutamente. Integriamo Sanity CMS — un pannello di controllo intuitivo da cui puoi modificare testi, foto e pagine senza toccare una riga di codice. Incluso nel prezzo.' },
     ],
-    ctaTitle: 'Richiedi un preventivo gratuito',
-    ctaDesc: 'Raccontaci il tuo progetto. Ti risponderemo entro 24 ore con una stima dettagliata.',
     backLink: '← Torna a Sviluppo Siti Web',
+    quoteBtn: 'Richiedi Preventivo',
   },
   en: {
     eyebrow: 'DIGITAL STUDIO — TURIN',
-    h1: 'PROFESSIONAL WEBSITE DEVELOPMENT IN TURIN.',
+    h1a: 'WEBSITE',
+    h1b: 'DEVELOPMENT',
+    h1c: 'IN TURIN.',
+    tagline1: 'NEXT.JS & REACT',
+    tagline2: 'SEO ENGINEERING',
+    tagline3: 'TURIN & ITALY',
     desc: 'We build custom websites for businesses, restaurants, professional studios and brands in Turin and across Piedmont. Next.js architecture, zero templates, 99/100 performance.',
+    stat1a: 'Loading in', stat1b: 'Milliseconds.', stat1c: 'Server-Side', stat1d: 'Ultra-fast Edge Architectures',
     breadcrumb: 'Web Development',
-    breadcrumbParent: 'Services',
-    stat1: '99/100', stat1Label: 'Google Lighthouse',
-    stat2: '<1s', stat2Label: 'Load time',
-    stat3: '100%', stat3Label: 'Native Code',
+    breadcrumbLabel: 'Website Turin',
     offeringsTitle: 'What type of website we build in Turin',
     offerings: [
       { icon: Globe, title: 'Brochure Website', desc: 'Professional presentation of your business. Bespoke design, SEO-optimised copy and structure built to convert visitors into clients. Ideal for professional studios, craftsmen and small Turin businesses.', price: 'From €2,500' },
@@ -170,6 +140,7 @@ const CONTENT = {
       { type: 'Web App / Portal', price: '€8,000+', time: 'Per project' },
       { type: 'Monthly Maintenance', price: 'From €150/mo', time: 'Ongoing' },
     ],
+    pricingColType: 'Type', pricingColPrice: 'Investment', pricingColTime: 'Timeline',
     faqLabel: 'FAQ',
     faqTitle: 'Questions about website development in Turin.',
     faqs: [
@@ -179,19 +150,21 @@ const CONTENT = {
       { q: 'Will my website appear on Google after launch?', a: 'Every site is delivered with XML sitemap, optimised meta tags, JSON-LD structured data and Google Search Console setup. Indexing typically occurs within 2-4 weeks of launch.' },
       { q: 'Can I manage the website content myself?', a: 'Absolutely. We integrate Sanity CMS — an intuitive control panel where you can edit text, photos and pages without touching a line of code. Included in the price.' },
     ],
-    ctaTitle: 'Request a free quote',
-    ctaDesc: 'Tell us about your project. We will reply within 24 hours with a detailed estimate.',
     backLink: '← Back to Web Development',
+    quoteBtn: 'Get a Quote',
   },
   fr: {
     eyebrow: 'STUDIO DIGITAL — TURIN',
-    h1: 'CRÉATION DE SITES WEB PROFESSIONNELS À TURIN.',
+    h1a: 'CRÉATION DE',
+    h1b: 'SITES WEB',
+    h1c: 'À TURIN.',
+    tagline1: 'NEXT.JS & REACT',
+    tagline2: 'SEO ENGINEERING',
+    tagline3: 'TURIN & ITALIE',
     desc: 'Nous développons des sites web sur mesure pour les entreprises, restaurants, studios professionnels et marques à Turin et en Piémont. Architecture Next.js, zéro template, performance 99/100.',
+    stat1a: 'Chargement en', stat1b: 'Millisecondes.', stat1c: 'Server-Side', stat1d: 'Architectures Edge ultra rapides',
     breadcrumb: 'Développement Web',
-    breadcrumbParent: 'Services',
-    stat1: '99/100', stat1Label: 'Google Lighthouse',
-    stat2: '<1s', stat2Label: 'Temps de chargement',
-    stat3: '100%', stat3Label: 'Code Natif',
+    breadcrumbLabel: 'Site Web Turin',
     offeringsTitle: 'Quel type de site web nous créons à Turin',
     offerings: [
       { icon: Globe, title: 'Site Vitrine', desc: 'Présentation professionnelle de votre activité. Design sur mesure, textes optimisés SEO et structure pensée pour convertir les visiteurs en clients.', price: 'À partir de €2 500' },
@@ -225,6 +198,7 @@ const CONTENT = {
       { type: 'Web App / Portail', price: '€8 000+', time: 'Par projet' },
       { type: 'Maintenance Mensuelle', price: 'À partir de €150/mois', time: 'Continu' },
     ],
+    pricingColType: 'Type', pricingColPrice: 'Investissement', pricingColTime: 'Délai',
     faqLabel: 'FAQ',
     faqTitle: 'Questions sur la création de sites web à Turin.',
     faqs: [
@@ -234,9 +208,8 @@ const CONTENT = {
       { q: 'Mon site apparaîtra-t-il sur Google après le lancement ?', a: 'Chaque site est livré avec sitemap XML, balises meta optimisées, données structurées JSON-LD et configuration Google Search Console. L\'indexation se produit généralement dans les 2-4 semaines.' },
       { q: 'Puis-je gérer le contenu du site moi-même ?', a: 'Absolument. Nous intégrons Sanity CMS — un panneau de contrôle intuitif depuis lequel vous pouvez modifier textes, photos et pages sans toucher une ligne de code. Inclus dans le prix.' },
     ],
-    ctaTitle: 'Demandez un devis gratuit',
-    ctaDesc: 'Parlez-nous de votre projet. Nous vous répondrons sous 24h avec une estimation détaillée.',
     backLink: '← Retour au Développement Web',
+    quoteBtn: 'Demander un Devis',
   },
 }
 
@@ -274,31 +247,51 @@ export default async function SitoWebTorinoPage({ params }: { params: Promise<{ 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* HERO */}
-      <section className="pt-32 pb-20 px-8 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto">
-          <nav className="flex items-center gap-2 text-xs text-gray-500 mb-10 font-mono">
-            <Link href={`/${lang}`} className="hover:text-[#CCFF00] transition-colors">Home</Link>
-            <span>/</span>
-            <Link href={`/${lang}/servizi/sviluppo-siti-web`} className="hover:text-[#CCFF00] transition-colors">{c.breadcrumb}</Link>
-            <span>/</span>
-            <span className="text-gray-300">{lang === 'it' ? 'Sito Web Torino' : lang === 'fr' ? 'Site Web Turin' : 'Website Turin'}</span>
-          </nav>
-          <p className="text-xs font-bold tracking-widest uppercase text-[#CCFF00] mb-6">| {c.eyebrow}</p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tight max-w-5xl mb-8">
-            {c.h1}
-          </h1>
-          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed mb-12">{c.desc}</p>
-          <div className="flex flex-wrap gap-6">
-            {[
-              { v: c.stat1, l: c.stat1Label },
-              { v: c.stat2, l: c.stat2Label },
-              { v: c.stat3, l: c.stat3Label },
-            ].map((s) => (
-              <div key={s.l} className="bg-white/5 border border-white/10 rounded-2xl px-6 py-4">
-                <p className="text-2xl font-bold text-[#CCFF00]">{s.v}</p>
-                <p className="text-xs text-gray-400 uppercase tracking-widest mt-1">{s.l}</p>
+      <section className="relative min-h-screen w-full bg-[#0A0A0A] text-white overflow-hidden flex flex-col justify-between p-8 md:p-12 lg:p-16">
+        <div className="absolute inset-0 z-0">
+          <Image src="/screen.png" alt={c.h1a} fill priority className="object-cover object-top opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/20 to-[#0A0A0A]" />
+        </div>
+        <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-12 w-full mt-24">
+          <div className="max-w-3xl">
+            <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6 font-mono">
+              <Link href={`/${lang}`} className="hover:text-[#CCFF00] transition-colors">Home</Link>
+              <span>/</span>
+              <Link href={`/${lang}/servizi/sviluppo-siti-web`} className="hover:text-[#CCFF00] transition-colors">{c.breadcrumb}</Link>
+              <span>/</span>
+              <span className="text-gray-300">{c.breadcrumbLabel}</span>
+            </nav>
+            <p className="text-xs font-semibold tracking-widest uppercase mb-6 text-gray-300">| {c.eyebrow}</p>
+            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-medium leading-[1.05] tracking-tight">
+              {c.h1a} <br />
+              <span className="text-transparent [-webkit-text-stroke:2px_#CCFF00]">{c.h1b}</span> <br />
+              {c.h1c}{' '}
+              <ArrowUpRight className="inline-block w-12 h-12 ml-4 p-3 border border-white/30 rounded-full text-[#CCFF00]" />
+            </h1>
+          </div>
+          <div className="lg:text-right flex flex-col lg:items-end mt-8 lg:mt-0">
+            <h2 className="text-lg md:text-xl font-medium leading-loose tracking-wider">
+              {c.tagline1}<br />{c.tagline2}<br />{c.tagline3}
+            </h2>
+            <p className="text-sm text-gray-400 max-w-xs mt-6 leading-relaxed">{c.desc}</p>
+          </div>
+        </div>
+        <div className="relative z-10 flex flex-col lg:flex-row justify-between items-end w-full mt-20">
+          <div className="grid grid-cols-2 md:flex md:flex-row gap-4 w-full lg:w-auto">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-5 md:p-6 md:w-56 flex flex-col justify-between h-36 md:h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
+              <p className="text-xs text-white font-medium leading-tight">{c.stat1a}<br /><span className="text-[#CCFF00]">{c.stat1b}</span></p>
+              <div>
+                <p className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">{c.stat1c}</p>
+                <p className="text-[9px] uppercase tracking-wider text-gray-500">{c.stat1d}</p>
               </div>
-            ))}
+            </div>
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-5 md:p-6 md:w-56 flex flex-col justify-between h-36 md:h-40 group hover:border-[#CCFF00]/40 transition-all duration-500">
+              <h3 className="text-4xl font-light tracking-tighter text-white">99<span className="text-sm align-top ml-1 text-[#CCFF00]">/100</span></h3>
+              <div>
+                <p className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">Google Lighthouse</p>
+                <p className="text-[9px] uppercase tracking-wider text-gray-500">Core Web Vitals</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -329,8 +322,7 @@ export default async function SitoWebTorinoPage({ params }: { params: Promise<{ 
             <ul className="space-y-4">
               {c.whyPoints.map((p, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                  <CheckCircle2 className="w-5 h-5 text-[#CCFF00] shrink-0 mt-0.5" />
-                  {p}
+                  <CheckCircle2 className="w-5 h-5 text-[#CCFF00] shrink-0 mt-0.5" />{p}
                 </li>
               ))}
             </ul>
@@ -339,12 +331,8 @@ export default async function SitoWebTorinoPage({ params }: { params: Promise<{ 
             <p className="text-xs font-bold tracking-widest uppercase text-[#CCFF00] mb-4">Digital Studio</p>
             <p className="text-4xl font-bold text-white mb-2">Torino</p>
             <p className="text-gray-400 text-sm mb-8">Piemonte, Italia — Disponibile Worldwide</p>
-            <Link
-              href={`/${lang}/#contact`}
-              className="inline-flex items-center gap-3 bg-[#CCFF00] text-black text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:bg-white transition-colors"
-            >
-              {lang === 'it' ? 'Richiedi Preventivo' : lang === 'fr' ? 'Demander un Devis' : 'Get a Quote'}
-              <ArrowUpRight className="w-4 h-4" />
+            <Link href={`/${lang}/#contact`} className="inline-flex items-center gap-3 bg-[#CCFF00] text-black text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:bg-white transition-colors">
+              {c.quoteBtn} <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -375,9 +363,9 @@ export default async function SitoWebTorinoPage({ params }: { params: Promise<{ 
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-[#111111] border-b border-white/10">
-                  <th className="text-left px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-400">{lang === 'it' ? 'Tipologia' : lang === 'fr' ? 'Type' : 'Type'}</th>
-                  <th className="text-left px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-400">{lang === 'it' ? 'Investimento' : lang === 'fr' ? 'Investissement' : 'Investment'}</th>
-                  <th className="text-left px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-400">{lang === 'it' ? 'Tempi' : lang === 'fr' ? 'Délai' : 'Timeline'}</th>
+                  <th className="text-left px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-400">{c.pricingColType}</th>
+                  <th className="text-left px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-400">{c.pricingColPrice}</th>
+                  <th className="text-left px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-400">{c.pricingColTime}</th>
                 </tr>
               </thead>
               <tbody>
@@ -403,8 +391,7 @@ export default async function SitoWebTorinoPage({ params }: { params: Promise<{ 
             {c.faqs.map((f, i) => (
               <div key={i} className="p-6 md:p-8 rounded-[2rem] bg-[#111111] border border-white/10 hover:border-white/30 transition-colors">
                 <h3 className="text-lg font-medium text-white mb-3 flex items-start gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#CCFF00] shrink-0 mt-2" />
-                  {f.q}
+                  <span className="w-2 h-2 rounded-full bg-[#CCFF00] shrink-0 mt-2" />{f.q}
                 </h3>
                 <p className="text-sm text-gray-400 leading-relaxed pl-5">{f.a}</p>
               </div>
@@ -413,7 +400,6 @@ export default async function SitoWebTorinoPage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {/* BACK LINK */}
       <div className="px-8 md:px-12 lg:px-24 pb-4">
         <div className="max-w-7xl mx-auto">
           <Link href={`/${lang}/servizi/sviluppo-siti-web`} className="text-xs font-bold tracking-widest uppercase text-gray-500 hover:text-[#CCFF00] transition-colors">
