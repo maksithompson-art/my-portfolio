@@ -20,6 +20,22 @@
     "photography": {
       "title": "Commercial Photography & 3D Rendering Italy | Maksi Thompson",
       "description": "Art Direction services based in Turin. Photography for restaurants, corporate events, brand identity and 3D CGI rendering for architecture and product."
+    },
+    "sitoWebTorino": {
+      "title": "Professional Website Development Turin | Free Quote | Maksi Thompson",
+      "description": "We build professional websites in Turin. Brochure sites, landing pages and custom Web Apps in Next.js. Free quote within 24 hours. Core Web Vitals 99/100."
+    },
+    "ecommerceTorino": {
+      "title": "E-Commerce Development Turin | Custom Online Store | Maksi Thompson",
+      "description": "Custom e-commerce development in Turin. Fast, secure online stores optimised for Google. Tailored solutions for businesses and local retailers."
+    },
+    "fotografoRistoranti": {
+      "title": "Restaurant Photographer Turin | Professional Food Photography | Maksi Thompson",
+      "description": "Food and restaurant photographer in Turin. Professional shoots for menus, social media and websites. Art direction included. Portfolio available."
+    },
+    "fotografoCorporate": {
+      "title": "Corporate Photographer Turin | Business & Events | Maksi Thompson",
+      "description": "Corporate and business photographer in Turin. Professional portraits, corporate events, conferences and brand identity for companies and professionals."
     }
   },
   "nav": {
@@ -129,7 +145,12 @@
     "home": "Home",
     "cases": "Cases",
     "about": "About",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "servicesTitle": "Services",
+    "webTorino": "Websites Turin",
+    "ecommerceTorino": "E-Commerce Turin",
+    "fotografoRistoranti": "Restaurant Photographer",
+    "fotografoCorporate": "Corporate Photographer"
   },
   "about": {
     "locationBadge": "Based in Turin, Italy",

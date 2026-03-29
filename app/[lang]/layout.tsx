@@ -82,38 +82,117 @@ export default async function LocaleLayout({
   // JSON-LD schema — AIO optimised (ChatGPT, Perplexity, Google Knowledge Graph)
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Maksi Thompson',
-    url: BASE_URL,
-    jobTitle: [
-      'Tech Lead',
-      'Full Stack Web Developer',
-      'Commercial Photographer',
-      '3D Artist',
-      'Art Director',
-    ],
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Torino',
-      addressRegion: 'Piemonte',
-      addressCountry: 'IT',
-    },
-    knowsAbout: [
-      'Web Development',
-      'Headless CMS',
-      'E-Commerce Development',
-      'SEO Engineering',
-      '3D Rendering',
-      'Computer-Generated Imagery (CGI)',
-      'Commercial Photography',
-      'Art Direction',
-      'React',
-      'Next.js',
-    ],
-    sameAs: [
-      'https://www.instagram.com/maksithompson',
-      'https://github.com/maksithompson',
-      'https://www.linkedin.com/in/maksithompson',
+    '@graph': [
+      {
+        '@type': 'Person',
+        name: 'Maksi Thompson',
+        url: BASE_URL,
+        jobTitle: [
+          'Tech Lead',
+          'Full Stack Web Developer',
+          'Commercial Photographer',
+          '3D Artist',
+          'Art Director',
+        ],
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Torino',
+          addressRegion: 'Piemonte',
+          addressCountry: 'IT',
+        },
+        knowsAbout: [
+          'Web Development',
+          'Headless CMS',
+          'E-Commerce Development',
+          'SEO Engineering',
+          '3D Rendering',
+          'Computer-Generated Imagery (CGI)',
+          'Commercial Photography',
+          'Art Direction',
+          'React',
+          'Next.js',
+        ],
+        sameAs: [
+          'https://www.instagram.com/maksithompson',
+          'https://github.com/maksithompson',
+          'https://www.linkedin.com/in/maksithompson',
+        ],
+      },
+      {
+        '@type': 'LocalBusiness',
+        '@id': `${BASE_URL}/#business`,
+        name: 'Maksi Thompson Digital Studio',
+        image: `${BASE_URL}/og-image.jpg`,
+        url: BASE_URL,
+        description: 'Digital Studio a Torino. Sviluppo siti web custom, e-commerce, fotografia commerciale e 3D rendering per brand ambiziosi.',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Torino',
+          addressRegion: 'Piemonte',
+          postalCode: '10100',
+          addressCountry: 'IT',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 45.0703,
+          longitude: 7.6869,
+        },
+        areaServed: [
+          { '@type': 'City', name: 'Torino' },
+          { '@type': 'Country', name: 'Italia' },
+        ],
+        priceRange: '$$$',
+        currenciesAccepted: 'EUR',
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+        sameAs: [
+          'https://www.instagram.com/maksithompson',
+          'https://github.com/maksithompson',
+          'https://www.linkedin.com/in/maksithompson',
+        ],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Servizi Digital Studio Torino',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Sviluppo Siti Web Torino',
+                url: `${BASE_URL}/it/servizi/sviluppo-siti-web`,
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Sviluppo E-Commerce Torino',
+                url: `${BASE_URL}/it/servizi/sviluppo-siti-web/ecommerce-torino`,
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Fotografo Ristoranti Torino',
+                url: `${BASE_URL}/it/servizi/fotografia/fotografo-ristoranti-torino`,
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Fotografo Corporate Torino',
+                url: `${BASE_URL}/it/servizi/fotografia/fotografo-corporate-torino`,
+              },
+            },
+          ],
+        },
+      },
     ],
   }
 

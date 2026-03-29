@@ -20,6 +20,22 @@
     "photography": {
       "title": "Fotografia Commerciale & 3D Rendering Torino | Maksi Thompson",
       "description": "Servizi di Art Direction a Torino. Fotografia per ristoranti, eventi corporate, brand identity e 3D rendering (CGI) per architettura e prodotto."
+    },
+    "sitoWebTorino": {
+      "title": "Realizzazione Siti Web Torino | Preventivo Gratuito | Maksi Thompson",
+      "description": "Realizziamo siti web professionali a Torino. Siti vetrina, landing page e Web App custom in Next.js. Preventivo gratuito entro 24 ore. Core Web Vitals 99/100."
+    },
+    "ecommerceTorino": {
+      "title": "Sviluppo E-Commerce Torino | Negozio Online Custom | Maksi Thompson",
+      "description": "Sviluppo e-commerce a Torino. Piattaforme di vendita online custom, veloci, sicure e ottimizzate per Google. Soluzioni su misura per aziende e attività locali."
+    },
+    "fotografoRistoranti": {
+      "title": "Fotografo Ristoranti Torino | Food Photography Professionale | Maksi Thompson",
+      "description": "Fotografo di food e ristorazione a Torino. Shooting professionale per menu, social media e siti web. Art direction inclusa. Portfolio disponibile."
+    },
+    "fotografoCorporate": {
+      "title": "Fotografo Corporate Torino | Aziendale & Eventi | Maksi Thompson",
+      "description": "Fotografo corporate e aziendale a Torino. Ritratti professionali, eventi aziendali, conferenze e brand identity per aziende e professionisti."
     }
   },
   "nav": {
@@ -129,7 +145,12 @@
     "home": "Home",
     "cases": "Cases",
     "about": "About",
-    "rights": "Tutti i diritti riservati."
+    "rights": "Tutti i diritti riservati.",
+    "servicesTitle": "Servizi",
+    "webTorino": "Siti Web Torino",
+    "ecommerceTorino": "E-Commerce Torino",
+    "fotografoRistoranti": "Fotografo Ristoranti",
+    "fotografoCorporate": "Fotografo Corporate"
   },
   "about": {
     "metaTitle": "Chi Sono | Maksi Thompson — Tech Lead & Fotografo Torino",

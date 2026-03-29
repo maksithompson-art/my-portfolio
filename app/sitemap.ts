@@ -16,6 +16,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/servizi/sviluppo-siti-web', priority: 0.85, changeFrequency: 'monthly' as const },
     { path: '/servizi/fotografia', priority: 0.85, changeFrequency: 'monthly' as const },
+    { path: '/servizi/sviluppo-siti-web/sito-web-torino', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/servizi/sviluppo-siti-web/ecommerce-torino', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/servizi/fotografia/fotografo-ristoranti-torino', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/servizi/fotografia/fotografo-corporate-torino', priority: 0.8, changeFrequency: 'monthly' as const },
   ]
 
   const staticUrls: MetadataRoute.Sitemap = staticPages.flatMap(({ path, priority, changeFrequency }) =>

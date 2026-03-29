@@ -11,6 +11,11 @@ interface FooterDict {
   cases: string
   about: string
   rights: string
+  servicesTitle: string
+  webTorino: string
+  ecommerceTorino: string
+  fotografoRistoranti: string
+  fotografoCorporate: string
 }
 
 export default function Footer({ dict, lang }: { dict: FooterDict; lang: string }) {
@@ -18,7 +23,7 @@ export default function Footer({ dict, lang }: { dict: FooterDict; lang: string 
 
   return (
     <footer className="w-full bg-[#0A0A0A] text-white pt-16 pb-8 px-8 md:px-12 lg:px-24 border-t border-white/10">
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-sm font-medium text-gray-400">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 text-sm font-medium text-gray-400">
 
         {/* Column 1: Location */}
         <div className="flex flex-col gap-4">
@@ -43,7 +48,16 @@ export default function Footer({ dict, lang }: { dict: FooterDict; lang: string 
           <Link href={`/${lang}/about`} className="hover:text-[#CCFF00] transition-colors w-fit">{dict.about}</Link>
         </div>
 
-        {/* Column 4: Logo & Copyright */}
+        {/* Column 4: Services */}
+        <div className="flex flex-col gap-4">
+          <h4 className="text-white text-[10px] font-bold tracking-widest uppercase mb-2">{dict.servicesTitle}</h4>
+          <Link href={`/${lang}/servizi/sviluppo-siti-web/sito-web-torino`} className="hover:text-[#CCFF00] transition-colors w-fit">{dict.webTorino}</Link>
+          <Link href={`/${lang}/servizi/sviluppo-siti-web/ecommerce-torino`} className="hover:text-[#CCFF00] transition-colors w-fit">{dict.ecommerceTorino}</Link>
+          <Link href={`/${lang}/servizi/fotografia/fotografo-ristoranti-torino`} className="hover:text-[#CCFF00] transition-colors w-fit">{dict.fotografoRistoranti}</Link>
+          <Link href={`/${lang}/servizi/fotografia/fotografo-corporate-torino`} className="hover:text-[#CCFF00] transition-colors w-fit">{dict.fotografoCorporate}</Link>
+        </div>
+
+        {/* Column 5: Logo & Copyright */}
         <div className="flex flex-col lg:items-end lg:text-right gap-4 justify-between h-full">
           <div className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center">
             <span className="text-white text-xs font-bold tracking-widest">M.T</span>
