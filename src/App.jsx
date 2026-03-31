@@ -368,8 +368,10 @@ export default function PortfolioApp() {
                     }`}
                   >
                     <img
-                      src={item.mainImage}
+                      src={item.mainImageThumb}
                       alt={item.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8">
@@ -618,6 +620,8 @@ export default function PortfolioApp() {
                     key={`img-${idx}`}
                     src={url}
                     alt={`${selectedProject.title} ${idx + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-auto rounded-xl object-cover shadow-2xl"
                   />
                 ))}
